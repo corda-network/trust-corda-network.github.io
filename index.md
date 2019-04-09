@@ -1,65 +1,110 @@
 |Corda Network Foundation|[Document history]({{ site.github.repository_url }}/blame/master/{{page.path}})|
 
-Introduction to Corda Network
-=============================
+Trust Root Generation
+=====================
 
-Welcome to Corda Network's website.
+The generation of the long-lived trust root for Corda Network required a level of ceremony, witnessing and 
+memorialisation that was met through a highly-scripted and secure event held at the R3 offices at 2 London Wall, 
+London, UK on Friday 14th September 2018. The ceremony required extensive preparation, advice and guidance from both 
+KPMG in 2017 and Schellman in 2018, and included 7 independent witnesses from global banks and R3's partner program. The 
+total expenditure was more than one year of effort, and significant financial cost, in order to deliver long-term 
+trust.
 
-![image](assets/images/global-map.png)
+The full script for the event and other supporting artifacts are found via the links and attachments below.
 
-[Corda Network](https://corda.network/) is a publicly-available internet of Corda nodes operated by network participants. Each 
-node is identified by a certificate issued by the network's identity service, and will also be identifiable on a network map. 
+The root key material generated is held in offline secure locations, and the subordinate key material held on production 
+HSMs.
 
-Corda Network enables interoperability – the exchange of data or assets via a secure, efficient internet layer – in a way 
-that isn't possible with separate, isolated Corda networks. A common trust root surrounds all transactions, and a consistent set of 
-network parameters ensures all participants may transact with each other.
+Certificate Policy
+------------------
+[Current version](certificate-policy.md) is v12 - this should be updated to "issue" before network launch.
 
-The network went live in December 2018, and is currently governed by R3. An independent, not-for-profit foundation has been 
-set-up to govern the network, and a transitional board of participants will be elected in Spring 2019, which will oversee the foundation 
-until democratic elections are held a year later. See the [governance model](governance/governance-guidelines.md) 
-for more detail.
+Certification Practices Statement
+---------------------------------
+[Current version](certificate-practices.md) is v09 - this should be updated to "issue" before network launch. 
 
-The network supports many sub-groups of participants running particular CorDapps (sometimes referred to as 'business networks'), 
-and these groups will often have a co-ordinating party (the 'business network operator') who manages the distribution of the 
-app and rules, including membership, for its use. There is a clear separation between areas of control for the network as a whole 
-and for individual business networks. Like the internet, Corda Network intends to exist as a background utility.
+Certificates
+------------
+The certificate bundle (in JKS format) is the most likely to be used. The remaining details and formats are included 
+for reference and to harmonise with other Certificate Authorities.
 
-The main benefit of Corda Network for participants is being able to move cash, digital assets, and identity data from one application 
-or line of business to another. Business network operators also benefit by being able to access network-wide services, and reuse the 
-[trust root](trust-root/index.md) and network services, instead of building and managing their own.
+|Name                          |Public Key      |Fingerprint                                                |Valid Until  |Links|
+|------------------------------|----------------|-----------------------------------------------------------|-------------|-----|
+|Corda Network Root Certificate|ECC-256, SHA-256|44:30:BE:62:A8:95:4B:13:03:5A:D3:C4:63:45:6E:9C:F1:1C:E4:65|Jan 18, 2038 |     |
+|Corda Network Authority CNA1  |ECC-256, SHA-256|A9:85:9F:69:4A:BF:06:00:3F:92:39:8B:D6:91:E4:AA:D0:02:ED:F5|Jan 18, 2038 |     |
+|Corda Network Authority CNA2  |ECC-256, SHA-256|DC:22:4B:27:06:12:C1:23:E1:34:B1:64:22:95:17:09:22:E4:B9:A4|Jan 18, 2038 |     |
+|Corda Network Authority CNA3  |ECC-256, SHA-256|EB:3F:58:3C:DA:0A:40:6F:F8:6E:49:9A:22:3F:8C:19:D5:8F:A0:88|Jan 18, 2038 |     |
+|Corda Network Authority CNA4  |ECC-256, SHA-256|78:1D:2D:23:54:A5:8E:7A:B5:ED:A1:FE:08:D0:8B:4E:F0:D6:8B:CE|Jan 18, 2038 |     |
+|Corda Network Authority CNA5  |ECC-256, SHA-256|7E:B3:9D:A4:D9:ED:F4:B4:86:06:79:6B:FE:F8:2A:7B:9C:C9:0E:97|Jan 18, 2038 |     |
+|Corda Network Authority CNA6  |ECC-256, SHA-256|2A:F4:08:90:73:CB:4F:14:B2:93:7A:CB:93:5A:6F:91:45:45:27:EB|Jan 18, 2038 |     |
+|Corda Network Authority CNA7  |ECC-256, SHA-256|82:40:F4:0E:A3:84:24:5C:70:23:40:2F:EE:26:32:6D:AA:0E:C4:BE|Jan 18, 2038 |     |
+|Corda Network Authority CNA8  |ECC-256, SHA-256|41:67:90:E4:B2:EA:D8:E9:B5:39:51:91:31:8C:D5:3C:C9:67:A0:3B|Jan 18, 2038 |     |
 
-Key services 
-============
 
-Identity Service
-----------------
-The Identity Service controls admissions of participants into Corda Network. The service receives certificate 
-signing requests (CSRs) from prospective network participants (sometimes via a business network operator) and reviews the 
-information submitted. A digitally signed participation certificate is returned if:
+Service Auditor's summary letter
+--------------------------------
+[Letter](root-key-ceremony-witness-summary-letter.pdf) from the service auditor, Schellman and Company, LLC. 
 
-* The participant meets the requirements specified in the bylaws and policies of the foundation (broadly speaking, limited to 
-sanction screening only);
-* The participant agrees to Corda Network participant terms of use.
-
-The Corda Network node can then use the participation certificate to register itself with the Network Map Service.
-
-Network Map Service
-------------------- 
-The Network Map Service accepts digitally signed documents describing network routing and identifying information from 
-nodes, based on the participation certificates signed by the Identity Service, and makes this information available to all 
-Corda Network nodes.
-
-Notary Service
---------------
-Corda design separates correctness consensus from uniqueness consensus, and the latter is provided by one or more Notary 
-Services. The Notary will digitally sign a transaction presented to it, provided no transaction referring to 
-any of the same inputs has been previously signed by the Notary, and the transaction timestamp is within bounds. 
-
-Business network operators and network participants may choose to enter into legal agreements which rely on the presence 
-of such digital signatures when determining whether a transaction to which they are party, or upon the details of which they 
-otherwise rely, is to be treated as 'confirmed' in accordance with the terms of the underlying agreement. 
-
-Support Service 
+Ceremony script
 ---------------
-The Support Service is provided to participants and business network operators to manage and resolve inquiries and incidents 
-relating to the Identity Service, Network Map Service and Notary Services.
+The original version of the script is a blank copy of the script used during the day. The internal witnesses annotated 
+script records witness signatures, timings and deviations from the script and other observations.
+
+This is the [Original Script](original-script-v10.pdf).
+
+This is the [Internal Witnesses' annotated script](witness-annotated-script.pdf).
+
+HSM initialisation script
+-------------------------
+The root and subordinate HSMs were initialized the night before the ceremony. The process was overseen and witnessed by 
+the Ceremony Administrator. See the [CA annotated HSM initialisation script](ca-annotated-hsm-initialisation-script.pdf).
+
+Ceremony Video
+--------------
+Extensive video recordings were made of the ceremony. The originals are not uploaded here, due to a combination of size 
+and format constraints. Versions rendered to a manageable size have been uploaded to YouTube. The links below will take you 
+there.
+
+The playlist for [Camera 1](https://www.youtube.com/playlist?list=PLi1PppB3-YrW7i3-nOBAE8Maf-EW_kPqx) shows a view of 
+the participants in the ceremony.
+
+The playlist for [Camera 2](https://www.youtube.com/playlist?list=PLi1PppB3-YrWGObJ6BIaSU7PnQ_7jlC5t) shows a view of 
+the entire room from behind the ceremony witness seating area. 
+
+The Cameras were set to record at 1080p, however the output does not 
+appear to reflect this.  Each 20 minute segment is approximately 500MB.
+
+[Video Capture](https://www.youtube.com/playlist?list=PLi1PppB3-YrWvg2IQTZnscqbL50a9E783) shows the output from the 
+HSM administration machine that used by the Ceremony Administrator to interact with the HSMs during the ceremony. These 
+appear to occupy approximately 724 MB per hour of recorded video at 720p.
+
+HSM management computer screen log
+----------------------------------
+The output from the HSM management machine was captured using the 'script' utility. There are two copies of the log file:
+
+See  the [original log complete with control characters](original-script-with-control-characters.log). There is a 
+SHA fingerprint available for for this file (e66a4c79e2ba4a9a12ee7ea7d28af14d1842d6f18ce203da445b194ce80df097). A 
+[processed version of the log](original-script-processed.log) is available (which does not have a fingerprint available, 
+but which is easier to read, as it does not have embedded control characters).
+
+HSM Logs
+--------
+Logs from HSMs and SHA256 fingerprints for the same, calculated on the HMS management computer at the time they were 
+exported.
+
+### Root HSM (HSM1)
+[HSM Log](hsm01_audit.log) [SHA 256](hsm01_audit.log.sha256.txt)
+
+[CSLAN Log](hsm01_cslan.log) [SHA 256](hsm01_cslan.log.sha256.txt)
+
+### Subordinate HSM (HSM2)
+[HSM Log](hsm02_audit.log) [SHA 256](hsm02_audit.log.sha256.txt)
+
+[CSLAN Log](hsm02_cslan.log) [SHA 256](hsm02_cslan.log.sha256.txt)
+
+HSM management machine ISO image
+--------------------------------
+
+The ISO image for HSM management machine is downloadable from cloud storage, due to the size of files. The ISO is at 
+[tcn-rkg-2018-09-13-09.iso](https://r3share.mohso.com/dl/x5ZRISCR0P/tcn-rkg-2018-09-13-09.iso_) and the corresponding 
+checksum is at [SHA checksum](https://r3share.mohso.com/dl/9YB0MlWQvk/SHASUM_). 
