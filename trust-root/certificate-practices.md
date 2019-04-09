@@ -1,4 +1,4 @@
-|Corda Network Foundation|[Document history]({{ site.github.repository_url }}/blame/master/{{page.path}})|
+|Corda Network trust root|[Document history]({{ site.github.repository_url }}/blame/master/{{page.path}})|
 
 The Corda Network Certification Practice Statement
 ==================================================
