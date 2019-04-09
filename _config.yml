@@ -16,13 +16,13 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-UK"
-title                    : "Corda Network Foundation"
+title                    : "Corda Network trust root"
 title_separator          : "-"
-name                     : "Corda Network Foundation Stichting"
-description              : "Corda Network is the internet of Corda nodes, governed by an open Foundation."
-url                      : "https://corda.network"
+name                     : "Corda Network trust root"
+description              : "Repository of Documentation and Issuing CA Certificates for the Corda Network"
+url                      : "https://trust.corda.network"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "corda-network/corda-network.github.io"
+repository               : "corda-network/trust-corda-network.github.io"
 teaser                   : # path of fallback teaser image, e.g. "/assets/images/500x300.png"
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
