@@ -3,5 +3,7 @@
 #    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
 
 pages:
-  - title: Trust Root
-    url: /trust-root/index.html
+  - title: Certificate Policy
+    url: /trust-root/certificate-policy.html
+  - title: Certificate Practices
+    url: /trust-root/certificate-practices.html
