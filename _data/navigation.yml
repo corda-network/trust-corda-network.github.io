@@ -3,7 +3,8 @@
 #    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
 
 pages:
-  - title: About
+  - title: Trust Root
+    url: /trust-root/index.html
     children:
     - title: Introduction
       url: /about/index.html
