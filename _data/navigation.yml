@@ -1,0 +1,9 @@
+#main:
+#  - title: "Quick-Start Guide"
+#    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
+
+pages:
+  - title: About
+    children:
+    - title: Introduction
+      url: /about/index.html

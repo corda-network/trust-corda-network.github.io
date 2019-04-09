@@ -1,0 +1,6 @@
+.DS_Store
+.idea
+Gemfile
+Gemfile.lock
+_site/
+corda-network.github.io.iml
