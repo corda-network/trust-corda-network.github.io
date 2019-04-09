@@ -5,8 +5,3 @@
 pages:
   - title: Trust Root
     url: /trust-root/index.html
-    children:
-    - title: Introduction
-      url: /about/index.html
-    - title: Trust Root
-      url: /trust-root/index.html
