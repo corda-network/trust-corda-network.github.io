@@ -1,9 +1,11 @@
-#main:
-#  - title: "Quick-Start Guide"
-#    url: https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/
-
 pages:
-  - title: Certificate Policy
-    url: /trust-root/certificate-policy.html
-  - title: Certificate Practices
-    url: /trust-root/certificate-practices.html
+  - title: Trust Root
+    children:
+    - title: Certificate Policy
+      url: /trust-root/certificate-policy.html
+    - title: Certification Practices Statuement
+      url: /trust-root/certificate-practices.html
+    - title: Ceremony script
+      url: /trust-root/original-script-v10.pdf
+    - title: Annotated script
+      url: /trust-root/witness-annotated-script.pdf
