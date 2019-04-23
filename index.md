@@ -17,11 +17,11 @@ HSMs.
 
 Certificate Policy
 ------------------
-[Current version](certificate-policy.md) is v12 - this should be updated to "issue" before network launch.
+[Current version](/trust-root/certificate-policy.md) is v12 - this should be updated to "issue" before network launch.
 
 Certification Practices Statement
 ---------------------------------
-[Current version](certificate-practices.md) is v09 - this should be updated to "issue" before network launch. 
+[Current version](/trust-root/certificate-practices.md) is v09 - this should be updated to "issue" before network launch. 
 
 Certificates
 ------------
@@ -43,21 +43,21 @@ for reference and to harmonise with other Certificate Authorities.
 
 Service Auditor's summary letter
 --------------------------------
-[Letter](root-key-ceremony-witness-summary-letter.pdf) from the service auditor, Schellman and Company, LLC. 
+[Letter](/trust-root/root-key-ceremony-witness-summary-letter.pdf) from the service auditor, Schellman and Company, LLC. 
 
 Ceremony script
 ---------------
 The original version of the script is a blank copy of the script used during the day. The internal witnesses annotated 
 script records witness signatures, timings and deviations from the script and other observations.
 
-This is the [Original Script](original-script-v10.pdf).
+This is the [Original Script](/trust-root/original-script-v10.pdf).
 
-This is the [Internal Witnesses' annotated script](witness-annotated-script.pdf).
+This is the [Internal Witnesses' annotated script](/trust-root/witness-annotated-script.pdf).
 
 HSM initialisation script
 -------------------------
 The root and subordinate HSMs were initialized the night before the ceremony. The process was overseen and witnessed by 
-the Ceremony Administrator. See the [CA annotated HSM initialisation script](ca-annotated-hsm-initialisation-script.pdf).
+the Ceremony Administrator. See the [CA annotated HSM initialisation script](/trust-root/ca-annotated-hsm-initialisation-script.pdf).
 
 Ceremony Video
 --------------
@@ -82,9 +82,9 @@ HSM management computer screen log
 ----------------------------------
 The output from the HSM management machine was captured using the 'script' utility. There are two copies of the log file:
 
-See  the [original log complete with control characters](original-script-with-control-characters.log). There is a 
+See  the [original log complete with control characters](/trust-root/original-script-with-control-characters.log). There is a 
 SHA fingerprint available for for this file (e66a4c79e2ba4a9a12ee7ea7d28af14d1842d6f18ce203da445b194ce80df097). A 
-[processed version of the log](original-script-processed.log) is available (which does not have a fingerprint available, 
+[processed version of the log](/trust-root/original-script-processed.log) is available (which does not have a fingerprint available, 
 but which is easier to read, as it does not have embedded control characters).
 
 HSM Logs
@@ -93,14 +93,14 @@ Logs from HSMs and SHA256 fingerprints for the same, calculated on the HMS manag
 exported.
 
 ### Root HSM (HSM1)
-[HSM Log](hsm01_audit.log) [SHA 256](hsm01_audit.log.sha256.txt)
+[HSM Log](/trust-root/hsm01_audit.log) [SHA 256](/trust-root/hsm01_audit.log.sha256.txt)
 
-[CSLAN Log](hsm01_cslan.log) [SHA 256](hsm01_cslan.log.sha256.txt)
+[CSLAN Log](/trust-root/hsm01_cslan.log) [SHA 256](/trust-root/hsm01_cslan.log.sha256.txt)
 
 ### Subordinate HSM (HSM2)
-[HSM Log](hsm02_audit.log) [SHA 256](hsm02_audit.log.sha256.txt)
+[HSM Log](/trust-root/hsm02_audit.log) [SHA 256](/trust-root/hsm02_audit.log.sha256.txt)
 
-[CSLAN Log](hsm02_cslan.log) [SHA 256](hsm02_cslan.log.sha256.txt)
+[CSLAN Log](/trust-root/hsm02_cslan.log) [SHA 256](/trust-root/hsm02_cslan.log.sha256.txt)
 
 HSM management machine ISO image
 --------------------------------
