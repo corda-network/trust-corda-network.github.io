@@ -3,7 +3,7 @@ pages:
     children:
     - title: Certificate Policy
       url: /trust-root/certificate-policy.html
-    - title: Certification Practices Statuement
+    - title: Certification Practices Statement
       url: /trust-root/certificate-practices.html
     - title: Ceremony script
       url: /trust-root/original-script-v10.pdf
