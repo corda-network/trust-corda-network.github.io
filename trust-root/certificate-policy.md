@@ -738,7 +738,7 @@ Security Auditors are responsible for reviewing, maintaining, and archiving audi
 
 RA staff (RA Staff) are the individuals holding trusted roles that operate and manage RA components. RA Staff is responsible for the following:
 
-*Installation, configuration, and maintenance of the RA;
+* Installation, configuration, and maintenance of the RA;
 * Establishing and maintaining RA operating system and application accounts;
 * Routine operation of the RA equipment such as system backup and recovery or changing recording media;
 * Registering new Subscriber and requesting the issuance of certificates;
