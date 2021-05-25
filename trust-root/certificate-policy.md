@@ -2,72 +2,52 @@
 
 # Corda Network Certificate Policy
 
-20th September 2018
+14 May 2021
+
+Corda Network Certificate Policy 1.0.
 
 # Document Classification
 
-In current state, this document is classified PUBLIC.
+Any version of this document that is published to an online repository is classified PUBLIC.
 
 # External Distribution
 
-This document is made available for public examination and dissemination.
+This document, when published to an online repository, is intented to be made available for public examination and dissemination.
 
 # 1 Introduction
 
-This document is the Corda Network Certificate Policy. It is provided for internal R3 review purposes and for other 
-stakeholders to assess the potential level of assurance provided by the Corda Network Certificate Authority.
+This document is the Corda Network Foundation (CNF) Certificate Policy (CP). It is provided for stakeholders to assess the potential level of assurance provided by the Corda Network Root Certificate Authority (Root CA) i.e. the Corda Network Foundation.  
 
-As with all draft documents, this document is subject to change. In particular, clauses marked “no stipulation” are 
-likely to be subject to frequent change as the document progresses from draft to release version.
+As with all documents, this document is subject to change. 
 
-For R3 employees, the document author should be your first point of contact for information or clarification regarding 
-the contents of this document. For external organisations to whom this document has been released, you should contact 
-your R3 representative if you have any questions.
+All enquiries about this policy should be directed to CNF representatives at info@corda.network.  
 
-This document does not modify existing agreements or obligations between R3 and other entities in any way.
+
 
 ## 1.1 Overview
 
-The Corda Network is a distributed population of Corda nodes operated by autonomous network participants. Participants 
-conduct various types of business through Corda Distributed Applications (CorDapps) running on those nodes. Such nodes 
-(instances of the Corda software) conduct bilateral sessions authenticated via TLS and using standard PKIX technology. 
-Each node is identified by means of an X509 certificate issued by an appointed Certificate Authority CA) for the 
-network. CAs are appointed by the governing body of the Corda Network^1.
+The “Corda Network” is a distributed population of Corda nodes which are owned by autonomous network participants (Participants). Participants conduct various types of business through Corda distributed applications (CorDapps) running on those nodes. Within the distributed population intra-node communication is conducted on a bi-lateral basis, utilising TCP sessions authenticated via TLS and using standard PKIX technology. In addition to the TLS authentication certificates, each node is identified by means of an X.509 certificate issued by an authorized CA for the network.  References to “CA” and “Network CA” under this CP will refer to one or more CAs authorized by the Policy Authority to issue certificates, which may include the Policy Authority itself. 
 
-This document (‘the Corda Network Certificate Policy’) describes the policy for issue, management and revocation of 
-X.509 certificates for participants of the Corda Network. Such certificates provide the basis of identity within the 
-Corda Network and assert the uniqueness of individual nodes and the ownership of records those nodes contain. Each node 
-is constrained to a single signing certificate and public/private key pair at the time of writing (sub-certificates are 
-used for TLS and some other activities). It is important to note that CAs in the Corda Network are not the same as 
-general internet CAs and should not be thought of as such. Corda has a much more constrained usage profile for 
-certificates than a general internet certificate and also has specific protections built into its logic that work off 
-the contents of the certificates.
+This document (“the Certificate Policy” or “CP”) describes the policy for the issuing, management and revocation of X.509 certificates for participants of the Corda Network. Such certificates provide the basis of identity within the Corda Network and assert the uniqueness of individual nodes and the ownership of records those nodes contain. Each node is constrained to a single signing certificate and public/private key pair at the time of writing (sub-certificates are used for TLS and some other activities). It is important to note that CAs in the Corda Network are not the same as general internet CAs and should not be thought of as such. The Corda Network has a much more constrained usage profile for certificates than a general internet certificate and also has specific constraints built into its logic that are reliant upon the contents of the certificates.
 
-This document has been derived from the NIST Draft Reference Certificate Policy NISTIR 7924 with modifications relevant 
-to the specialised nature of the Corda Network Certificate Authority.
+This document has been derived from the NIST Draft Reference Certificate Policy NISTIR 7924 with modifications relevant to the specialised nature of the Corda Network Root Certificate Authority.
 
-To ease review, we have maintained a standard structure and terminology for this document based on NIST publications. 
-Corda Network Participants (node operators) are equivalent to both ‘subscribers’ and ‘relying parties’ in NIST 
-terminology.
+To ease review, we have maintained a standard structure and terminology for this document based on NIST publications. Corda Network Participants (legal node owners) are equivalent to both ‘subscribers’ and ‘relying parties’ in NIST terminology.
 
-The Corda Network will comprise many sub-groups or ‘business networks’ of participants running particular CorDapps for 
-particular use cases and such groups will often have a co-ordinating party (the ‘Business Network Operator’) who 
-manages the distribution of the app and rules for its use. Such Business Network Operators may fulfil the role of 
-‘Registration Authority’ in the Corda Network.
+The Corda Network will comprise many sub-groups or ‘business networks’ of participants running particular CorDapps for particular use cases and such groups will often have a co-ordinating party (the ‘Business Network Operator’) who manages the distribution of the app and rules for its use. Such Business Network Operators may fulfil the role of ‘Registration Authority’ in the Corda Network.
 
-This Certificate Policy is owned and maintained by the Policy Authority of the Corda Network Foundation.
+This Certificate Policy is owned and maintained by the policy authority of the Corda Network Foundation (Policy Authority).
+
+The Policy Authority is responsible for implementing reasonable measures designed to confirm that all aspects of the CA services, operations, and infrastructure related to certificates issued under the CP are performed in accordance with the requirements, representations, and warranties of the CP.
+
+
 
 ## 1.2 Name and Identification
 
-This document is the Corda Network Certificate Policy (CP). It is the principal statement of policy governing the Corda 
-Network PKI. The Corda Network PKI’s primary function is to support identity assurance between subscribers engaging in 
-transactions of legal and financial significance within the Corda Network.
+This document is the Corda Network Certificate Policy (CP). It is the principal statement of policy governing the Corda Network public key infrastructure (Corda Network PKI). The Corda Network PKI’s primary function is to support identity assurance between Participantss engaging in transactions of legal and financial significance within the Corda Network.
 
-An enterprise number for R3 has been requested from IANA. Future versions of this document will include the R3 OID used 
-for the purposes of identifying this CP.
+CAs are not required to comply with this CP through the use of a Policy Identifier. 
 
-(^1) The Corda Network is currently governed and operated by R3, but governance activities will be handed over to an 
-independent and representative Foundation once the network has reached a threshold size.
 
 ## 1.3 PKI Participants
 
@@ -75,75 +55,59 @@ The following categories of PKI participants are defined in the sections that fo
 
 * Certificate Authorities
 * Registration Authorities
-* Subscribers – Corda network participants issued with a certificate by the Corda Network Operator.
-* Relying Parties – Corda network participants that act in reliance on a Corda Network Operator issued certificate to 
-verify a digital signature and or decrypt an encrypted document or message from other participants.
+* Subscribers – Corda Network Participants issued with a certificate by the Corda Network CA.
+* Relying Parties – Corda Network Participants that act in reliance on a Corda Network CA-issued certificate to verify a digital signature and in support of decryption and encryption of documents or messages from other participants.
 
 This section identifies roles that are relevant to the administration and operation of CAs under this policy.
 
 ### 1.3.1 Certificate Authority
 
-The CA is the collection of hardware, software and operating personnel that create, sign, and issue public key 
-certificates to subscribers. The CA is responsible for issuing and managing certificates including:
-
+The CA is the collection of hardware, software and operating personnel that create, sign, and issue public key certificates pursuant to this CP. The CA is responsible for issuing and managing certificates including:
 * Approving the issuance of all certificates, including those issued to subordinate CAs and RAs;
 * Publication of certificates;
-* Revocation of certificates;
+* Revocation of its certificates;
 * Generation and destruction of CA signing keys;
 * Establishing and maintaining the CA system;
-* Establishing and maintaining the Certificate Policy (CP) & Certification Practice Statement (CPS); _and_
-* Ensuring that all aspects of the CA services, operations, and infrastructure related to certificates issued under the 
-CP are performed in accordance with the requirements, representations, and warranties of the CP.
+* Establishing and maintaining a Certification Practice Statement (CPS).
+
+
 
 ### 1.3.2 Registration Authorities
 
-The registration authorities (RAs) collect and verify each subscriber’s identity and information that is to be entered 
-into the subscriber’s public key certificate. The RA performs its function in accordance with a CPS approved by the 
-Policy Authority. The RA is responsible for:
+The registration authorities (RAs) collect and verify each Subscriber’s identity and information that is to be entered into the Subscriber’s public key certificate. The RA performs its function in accordance with a CPS approved by the Policy Authority. The RA is responsible for:
 
 * The registration process; and
 * The identification and authentication process.
 
+
 ### 1.3.3 Trusted Agents
 
-The trusted agent is a person who satisfies all the appointment requirements for an RA and who performs identity 
-proofing as a proxy for the RA. The trusted agent records information from and verifies presented credentials for an 
-applicant’s identity on behalf of the RA. The CPS will identify the parties responsible for providing such services, 
-and the mechanisms for determining their trustworthiness.
+The trusted agent is an entity that satisfies all the appointment requirements for an RA and who performs identity proofing as a proxy for the RA. The trusted agent records information from and verifies presented credentials for an applicant’s identity on behalf of the RA. The CPS will identify the parties (if any) responsible for providing such services, and the mechanisms for determining their trustworthiness.
+
 
 ### 1.3.4 Subscribers
 
-In the Corda Network PKI, a subscriber is an individual or organization that is capable of using and authorized to use 
-the private key corresponding to the public key listed in a Corda Network certificate, and that: (1) is named in a 
-certificate’s “subject” field and (2) has agreed to the terms of a subscriber agreement with the Corda Network 
-Foundation and: (3) asserts the use of the key and certificate in accordance with any certificate policy asserted in 
-the certificate.
+In the Corda Network PKI, a subscriber (Subscriber) is an organization that is capable of using, and authorized to use the private key corresponding to the public key listed in a Corda Network certificate, and that: (1) is named in a certificate’s “organisation” field; (2) has agreed to the terms of a subscriber agreement with the CA  (Subscriber Agreement); and (3) asserts the use of the key and certificate in accordance with any certificate policy asserted in the certificate.  The terms of the Subscriber Agreement may be provided as a separate agreement or within the terms of Corda Network Participant Terms of Use (Terms of Use).
 
-In a Corda network, certificates issued to subscribers will also grant those subscribers the ability to further issue 
-certificates that can be used in a specific, constrained way within that Corda network. These certificates can be used 
-to represent that entity only and therefore, for the purposes of this policy, do not confer CA status upon the subscriber.
+In the Corda Network, certificates issued to Subscribers will also grant those Subscribers the ability to further issue certificates for use within the Corda Network. These certificates can be used to represent that entity only and therefore, for the purposes of this policy, do not confer CA status upon the Subscriber.
+
+
 
 ### 1.3.5 Relying Parties
 
-A Relying Party is an entity that relies on the validity of the binding of the Subscriber’s name to a public key. The 
-Relying Party uses a Subscriber’s certificate to verify or establish the identity and status of a system or device. A 
-Relying Party is responsible for deciding whether or how to check the validity of the certificate by checking the 
-appropriate certificate status information. A Relying Party may use information in the certificate to determine the 
-suitability of the certificate for a particular use.
+A relying party (Relying Party) is an entity that relies on the validity of the binding of the Subscriber’s name to a public key in a certificate. The Relying Party uses a Subscriber’s certificate to verify or establish the identity and status of a system or device. A Relying Party is responsible for deciding whether or how to check the validity of the certificate by checking the appropriate certificate status information. A Relying Party may use information in the certificate to determine the suitability of the certificate for a particular use.
+
 
 ### Network Participants
 
-As all entities in the Corda Network other than CAs or RAs will be both subscribers and relying parties, this policy 
-often uses the term “network participant”, or more simply, “participant” to refer to those entities. Where a 
-distinction is required, this policy will return to the more standard nomenclature present in the NIST reference CP 
-(on which it is based).
+As all entities in the Corda Network other than CAs or RAs will be both Subscribers and Relying Parties, this policy often uses the term “Network Participant”, or more simply, “Participant” to refer to those entities. Where a distinction is required, this policy will return to the more standard nomenclature present in the NIST reference CP (on which it is based).
 
 ## 1.4 Certificate Usage
 
 ### 1.4.1 Appropriate Certificate Uses
 
-Certificates issued by the Corda Network CA will be used to further generate certificates for authenticated peer-to-peer 
-messaging across The Corda Network, in addition to certificates for use in individual transactions.
+Certificates issued by the Corda Network CA will be used to further generate certificates for authenticated peer-to-peer messaging across the Corda Network, in addition to certificates for use in individual transactions.
+
 
 ### 1.4.2 Prohibited Certificate Uses
 
@@ -153,64 +117,54 @@ No stipulation.
 
 ### 1.5.1 Organization Administering the Document
 
-The Policy Authority of the Corda Network Foundation (the “Policy Authority”) is responsible for all aspects of this CP.
+The Policy Authority is responsible for all aspects of this CP. The Policy Authority reserves the right to delegate performance or management of aspects of this CP to a designated third party.
 
 ### 1.5.2 Contact Person
 
-The Policy Authority can be contacted at: Information Security Team security@r3.com
+The Policy Authority can be contacted at: info@corda.network
 
 ### 1.5.3 Person Determining CPS Suitability for the Policy
 
-The Policy Authority shall approve the CPS for each CA that issues certificates under the policy.
+The Policy Authority shall approve the CPS for each Network CA that issues certificates under the policy.
 
 ### 1.5.4 CPS Approval Procedures
 
-CAs issuing under the policy are required to meet all facets of the policy. The Policy Authority shall work with a CA 
-to minimize the use of waivers.
+CAs issuing under this policy are required to meet all facets of this policy. The Policy Authority shall work with a CA to minimize the use of waivers.
 
-The Policy Authority shall make the determination that a CPS complies with the policy. The CA and RA must meet all 
-requirements of an approved CPS before commencing operations. The Policy Authority will make this determination based 
-on the nature of the system function, the type of communications, or the operating environment.
+The Policy Authority shall make the determination that a CPS complies with this policy. The CA and RA must meet all requirements of an approved CPS before commencing operations. The Policy Authority will make this determination based on the nature of the system function, the type of communications, or the operating environment.
 
-In each case, the determination of suitability shall be based on an independent compliance auditor’s results and 
-recommendations. See section 8 for further details.
+In each case, the determination of suitability shall be based on an independent compliance auditor’s results and recommendations. See section 8 for further details.
+
 
 ## 1.6 Definitions and Acronyms
 
-See appendix A
+See appendix A.
 
 # 2 Publication and Repository Responsibilities
 
 ## 2.1 Repositories
-All CAs that issue certificates under this policy are obliged to post all CA certificates issued by or to the CA and 
-CRLs issued by the CA in a repository that is accessible to Corda Network participants.
+All CAs that issue certificates under this policy are obliged to post revocation information issued by the CA in a repository that is accessible to Corda Network Participants.
 
-CAs are **not** required to post all certificates issued to Corda Network participants to a central repository.
+CAs are **not** required to post all certificates issued to Corda Network Participants to a central repository.
 
 ## 2.2 Publication of Certification Information
 
 ### 2.2.1 Publication of Certificates and Certificate Status
 
-The repository system shall be designed and implemented so as to provide 99% availability overall and limit scheduled 
-down-time to 0.5% annually. Where applicable, the certificate status server (CSS) shall be designed and implemented so 
-as to provide 99% availability overall and limit scheduled down-time to 0.5% annually.
+Where applicable, the certificate status server (CSS) shall be designed and implemented so as to provide 99% availability overall annually, excluding scheduled downtime. 
 
 ### 2.2.2 Publication of CA Information
 
-The CP shall be available to subscribers. The CPS of the CA may also be published; a CPS summary shall either be 
-publicly available or available upon request.
+The CP shall be available to Subscribers. The CPS of the CA may also be published; a CPS summary shall either be publicly available or available upon request to Network Participants.
 
 ## 2.3 Time or Frequency of Publication
 
-An updated version of the CP will be made publicly available within thirty days of the incorporation of changes.
+An updated version of the CP will be made publicly available to Network Participants within thirty days of the incorporation of changes.
+
 
 ## 2.4 Access Controls on Repositories
 
-The CA shall protect information not intended for public dissemination or modification. CA certificates and CRLs in the 
-repository shall be available to Corda Network participants. Direct and/or remote access to other information in the CA 
-repositories shall be determined by Policy Authority. The CPS shall detail what information in the repository shall be 
-exempt from automatic availability and to whom, and under which conditions the restricted information may be made 
-available.
+The CA shall implement reasonable measures designed to protect information not intended for public dissemination or modification. CA certificates and CRLs in the repository shall be available to Network Participants. Direct and/or remote access to other information in the CA repositories shall be determined by Policy Authority. The CPS shall detail what information in the repository shall be exempt from automatic availability and to whom, and under which conditions the restricted information may be made available.
 
 # 3 Identification and Authentication
 
@@ -218,14 +172,12 @@ available.
 
 ### 3.1.1 Types of Names
 
-The CA shall assign an X.50 0 Distinguished Name (DN) to each subscriber.
+The CA shall assign an X.500 series Distinguished Name (DN) to each Subscriber.
 
 ### 3.1.2 Need for Names to Be Meaningful
 
-Names used in certificates must represent an unambiguous identifier for the subject. Names should be meaningful enough 
-for a human to identify the named entity, irrespective of whether the entity is a person, machine, or process. 
-Interpreting the name semantic may require a reference database (e.g. human resources directory or inventory catalogue) 
-external to the PKI.
+Names used in certificates must represent an unambiguous identifier for the Subscriber. Names should be meaningful enough for a human to identify the named entity, irrespective of whether the entity is a person, machine, or process. Interpreting the name semantic may require a reference database (e.g. human resources directory or inventory catalogue) external to the PKI.
+
 
 ### 3.1.3 Anonymity or Pseudonymity of Subscribers
 
@@ -237,36 +189,28 @@ No stipulation.
 
 ### 3.1.5 Uniqueness of Names
 
-The CA must ensure that each of its subscribers is identifiable by a unique name. Each X.500 DN assigned to a subscriber 
-by a CA (i.e., in that CA's namespace) must identify that subscriber uniquely.
+The CA must use reasonable measures to require that each of its Subscribers is identifiable by a unique name. Each X.500 DN assigned to a Subscriber by a CA (i.e., in that CA's namespace) must identify that Subscriber uniquely.
 
 The CPS shall identify the method for the assignment of unique subject names.
 
 ### 3.1.6 Recognition, Authentication, and Role of Trademarks
 
-The Corda Network is currently targeted at organisational applications, and therefore subscribers will therefore, at 
-least in the initial life of the network, be associated with an organization, legal entity name, trade name or trademark.
+The Corda Network is currently targeted at organisational applications, and therefore Subscribers will therefore, at least in the initial life of the Corda Network, be associated with an organization, legal entity name, trade name or trademark.
 
-For organizational subscribers, the CA must ensure that the X.500 DN of any subscriber certificate issued accurately 
-reflects the legal entity name of the subscriber as recorded in the applicable local registry.
+For organizational Subscribers, the CA must ensure that the X.500 DN of any Subscriber certificate issued accurately reflects the legal entity name of the Subscriber as recorded in the applicable local registry.
 
 ## 3.2 Initial Identity Validation
 
 ### 3.2.1 Method to Prove Possession of Private Key
 
-In all cases where the party named in a certificate generates its own keys, that party shall be required to prove 
-possession of the private key, which corresponds to the public key in the certificate request.
+In all cases where the party named in a certificate generates its own keys, that party shall be required to prove possession of the private key, which corresponds to the public key in the certificate request.
 
 ### 3.2.2 Authentication of Organization Identity
 
-Requests for CA certificates shall include the CA name, address, and documentation of the existence of the CA. Before 
-issuing CA certificates, an authority for the issuing CA shall verify the information, in addition to the authenticity 
-of the requesting representative and the representative’s authorization to act in the name of the CA.
+Requests for CA certificates shall include the CA name, address, and documentation of the existence of the CA. Before issuing CA certificates, an authority for the issuing CA shall use reasonable efforts to verify the information, in addition to the authenticity of the requesting representative and the representative’s authorization to act in the name of the CA.
 
-For subscriber certificates, the CA shall verify the existence of the organization by verifying the identity and address 
-of the organization and that the address is the subscriber’s address of existence or operation. The CA shall verify the 
-identity and address of the subscriber using documentation provided by, or through communication with, at least one of 
-the following:
+For Subscriber certificates, the CA shall verify the existence of the organization by using reasonable efforts to verify the identity and address of the organization and that the address is the Subscriber’s address of existence or operation. The CA shall verify the identity and address of the Subscriber using documentation provided by, or through communication with, at least one of the following:
+
 
 * Official communication with the organization;
 * A third-party database that is periodically updated and considered a reliable data source; _or_
@@ -277,9 +221,7 @@ address.
 
 ### 3.2.3 Authentication of Individual Identity
 
-The Corda Network is currently targeted at organisational applications, and as such this policy does not currently 
-stipulate requirements to authenticate individual identities. It is recognised that this may change in the future and 
-that use cases involving individual identities will result in revisions to this policy.
+The Corda Network is currently targeted at organisational applications, and as such this policy does not currently stipulate requirements to authenticate individual identities. It is recognised that this may change in the future and that use cases involving individual identities will result in revisions to this policy.
 
 #### 3.2.3.1 Authentication of Human Subscribers
 
@@ -307,11 +249,9 @@ Information that is not verified shall not be included in certificates.
 
 ### 3.2.5 Validation of Authority
 
-Before issuing CA certificates or signature certificates that assert organizational authority, including certificates 
-for Corda Network participants, the CA shall validate the subscriber’s authority to act in the name of the organization.
+Before issuing CA certificates or signature certificates that assert organizational authority, including certificates for Corda Network Participants, the CA shall validate the Subscriber’s authority to act in the name of the organization.
 
-The most prevalent certificates that assert organizational authority within the Corda Network are Corda node 
-certificates.
+The most prevalent certificates that assert organizational authority within the Corda Network are Corda Network node certificates.
 
 ### 3.2.6 Criteria for Interoperation
 
@@ -337,50 +277,38 @@ Revocation requests must be authenticated.
 
 ## 4.1 Certificate Application
 
-The Certificate application process must provide sufficient information to:
+The certificate application (Certificate Application) process must provide sufficient information to:
 
-* Establish the applicant’s authorization (by the subscriber or sponsoring organization) to obtain a certificate. (per 
-Section 3.2.3);
+* Establish the applicant’s authorization (by the Subscriber or sponsoring organization) to obtain a certificate. (per Section 3.2.3);
 * Establish and record identity of the applicant. (per Section 3.2.3);
-* Obtain the subscriber’s Corda node public key from the applicant and verify the applicant’s possession of the private 
-key for each certificate required. (per Section 3.2.1); _and_
+* Obtain the Subscriber’s Corda Node public key from the applicant and verify the applicant’s possession of the private key for each certificate required. (per Section 3.2.1); *and*
 * Verify any other information requested for inclusion in the certificate.
 
-These steps may be performed in any order that is convenient for the CA and applicants that does not compromise 
-security, but all must be completed before certificate issuance.
+These steps may be performed in any order that is convenient for the CA and applicants that does not compromise security, but all must be completed before certificate issuance.
 
 ### 4.1.1 Who can Submit a Certificate Application?
 
-A certificate application may be submitted to the CA by the Subscriber authorised organisational representative (AOR), 
-or an RA on behalf of the Subscriber.
+A Certificate Application may be submitted to the CA by the Subscriber authorised organisational representative (AOR), or an RA on behalf of the Subscriber.
 
 ### 4.1.2 Enrolment Process and Responsibilities
 
-All communications among PKI Authorities supporting the certificate application and issuance process shall be 
-authenticated and protected from modification; any electronic transmission of shared secrets and personally 
-identifiable information shall be protected. Communications may be electronic or out-of-band.
+All communications among PKI authorities supporting the Certificate Application and issuance process shall be appropriately authenticated and protected against modification; any electronic transmission of shared secrets and personally identifiable information shall be protected. Communications may be electronic or out-of-band.
 
-Where electronic communications are used, cryptographic mechanisms commensurate with the strength of the public/private 
-key pair shall be used. Out-of-band communications shall protect the confidentiality and integrity of the data.
+Where electronic communications are used, cryptographic mechanisms commensurate with the strength of the public/private key pair shall be used. Out-of-band communications shall protect the confidentiality and integrity of the data.
 
-Subscribers are responsible for providing accurate information on their certificate applications.
+Subscribers are responsible for providing accurate information on their Certificate Applications.
 
 ## 4.2 Certificate Application Processing
 
-Information in certificate applications must be verified as accurate before certificates are issued.
-Procedures to verify information in certificate applications shall be specified in the CPS.
+Information in Certificate Applications must be verified through reasonable measures as accurate before certificates are issued. Procedures to verify information in Certificate Applications shall be specified in the CPS.
 
 ### 4.2.1 Performing Identification and Authentication Functions
 
-The identification and authentication of the subscriber must meet the requirements specified for subscriber 
-authentication as specified in Sections 3.2 and 3.3. The components of the PKI (e.g., CA or RA) that are responsible for 
-authenticating the subscriber’s identity in each case must be identified in the CPS.
+The identification and authentication of the Subscriber must meet the requirements specified for Subscriber authentication as specified in Sections 3.2 and 3.3. The components of the PKI (e.g., CA or RA) that are responsible for authenticating the Subscriber’s identity in each case must be identified in the CPS.
 
 ### 4.2.2 Approval or Rejection of Certificate Applications
 
-Any certificate application that is received by a CA under this policy, for which the identity and authorization of the 
-applicant has been validated, will be duly processed. However, the CA must reject any application for which such 
-validation cannot be completed, or when the CA has cause to lack confidence in the application or certification process.
+Any Certificate Application that is received by a CA under this policy, for which the identity and authorization of the applicant has been validated, will be duly processed. However, the CA must reject any application for which such validation cannot be completed, or when the CA has cause to lack confidence in the application or certification process.
 
 ### 4.2.3 Time to Process Certificate Applications
 
@@ -391,67 +319,52 @@ No stipulation.
 
 ### 4.3.1 CA Actions during Certificate Issuance
 
-Upon receiving the request, the CAs/RAs will:
+Upon receiving the request, the CA or RA will use reasonable measures to:
 
-* Verify the identity of the requester as specified in Section 3.2;
-* Verify the authority of the requester and the integrity of the information in the certificate request as specified in 
-Section 4.1;
-* Build and sign a certificate if all certificate requirements have been met (in the case of an RA, arrange for the CA 
-to sign the certificate); _and_
-* Make the certificate available to the subscriber after confirming that the subscriber has formally acknowledged their 
-obligations as described in Section 9.6.3.
+* Verify the identity of the requesting Subscriber as specified in Section 3.2;
+* Verify the authority of the requester and the integrity of the information in the certificate request as specified in Section 4.1;
+* Build and sign a certificate if all certificate requirements have been met (in the case of an RA, arrange for the CA to sign the certificate); and
+* Make the certificate available to the Subscriber after confirming that the Subscriber has formally acknowledged their obligations as described in Section 9.6.3.
 
-The certificate request may already contain a certificate built by either the RA or the subscriber. This certificate 
-will not be signed until all verifications and modifications, if any, have been completed to the CA’s satisfaction.
+The certificate request may already contain a certificate built by either the RA or the Subscriber. This certificate will not be signed until all verifications and modifications, if any, have been completed to the CA’s satisfaction.
 
-All authorization and other attribute information received from a prospective subscriber shall be verified before 
-inclusion in a certificate. The responsibility for verifying prospective subscriber data shall be described in a CA’s 
-CPS.
+All authorization and other attribute information received from a prospective Subscriber shall be reasonably verified before inclusion in a certificate. The responsibility for verifying prospective Subscriber data shall be described in a CA’s CPS.
 
 ### 4.3.2 Notification to Subscriber by the CA of Issuance of Certificate
 
-CAs operating under this policy shall inform the subscriber (or other certificate subject) of the creation of a 
-certificate and make the certificate available to the subscriber. For Corda nodes, the CA shall issue the certificate 
-according to the certificate requesting protocol used by the node (this may be automated) and, if the protocol does not 
-provide inherent notification, also notify the AOR of the issuance (this may be in batch).
+CAs operating under this policy shall inform the Subscriber (or other certificate subject) of the creation of a certificate and make the certificate available to the Subscriber. For Corda Nodes, the CA shall issue the certificate according to the certificate requesting protocol used by the node (this may be automated) and, if the protocol does not provide inherent notification, also notify the AOR of the issuance (this may be in batch).
 
 ## 4.4 Certificate Acceptance
 
-Before a subscriber can make effective use of its private key, the CA shall explain to the subscriber its 
-responsibilities and obtain the subscriber’s acknowledgement, as defined in Section 9.6.3.
+Before a Subscriber can make effective use of its private key, the CA shall inform the Subscriber of its responsibilities and obtain the Subscriber’s acknowledgement, as defined in Section 9.6.3.
 
 ### Conduct Constituting Certificate Acceptance
 
 Failure to object to the certificate or its contents shall constitute acceptance of the certificate.
 
-###4.4.2 Publication of the Certificate by the CA
+### 4.4.2 Publication of the Certificate by the CA
 
 As specified in Section 2.1, all CA certificates shall be published in repositories.
 
-This policy makes no stipulation regarding publication of subscriber certificates.
+This policy makes no stipulation regarding publication of Subscriber certificates.
 
 ### 4.4.3 Notification of Certificate Issuance by the CA to Other Entities
 
-The Policy Authority must be notified whenever a CA operating under this policy issues a CA certificate.
+No stipulation.
 
 ## 4.5 Key Pair and Certificate Usage
 
 ### 4.5.1 Subscriber Private Key and Certificate Usage
 
-The intended scope of usage for a private key is specified though certificate extensions, including the key usage 
-extensions, in the associated certificate.
+The intended scope of usage for a private key is specified though certificate extensions, including the key usage extensions, in the associated certificate.
 
 ### 4.5.2 Relying Party Public Key and Certificate Usage
 
-Certificates may specify restrictions on use though critical certificate extensions, including the basic constraints and 
-key usage extensions. All CAs operating under this policy shall issue CRLs specifying the current status of all unexpired 
-certificates except for OCSP responder certificates. It is recommended that relying parties process and comply with this 
-information whenever using certificates in a transaction.
+Certificates may specify restrictions on use through critical certificate extensions, including the basic constraints and key usage extensions. All CAs operating under this policy shall issue CRLs specifying the current status of all unexpired certificates. It is recommended that relying parties process and comply with this information whenever using certificates in a transaction.
 
 ### 4.6 Certificate Renewal
 
-Renewing a certificate means creating a new certificate with the same name, key, and other information as the old one, 
-but with a new, extended validity period and a new serial number.
+Renewing a certificate means creating a new certificate with the same name, key, and other information as the old one, but with a new, extended validity period and a new serial number.
 
 ### 4.6.1 Circumstance for Certificate Renewal
 
@@ -483,12 +396,7 @@ No stipulation.
 
 ### 4.7 Certificate Re-key
 
-Re-keying a certificate consists of creating new certificates with a different public key (and serial number) while 
-retaining the remaining contents of the old certificate that describe the subject. The new certificate may be assigned 
-a different validity period, key identifiers, specify a different CRL distribution point, and/or be signed with a 
-different key. Re-key of a certificate does not require a change to the _subjectName_ and does not violate the 
-requirement for name uniqueness. The old certificate may or may not be revoked, but must not be further re-keyed, 
-renewed, or modified.
+Re-keying a certificate consists of creating new certificates with a different public key (and serial number) while retaining the remaining contents of the old certificate that describe the subject. The new certificate may be assigned a different validity period, key identifiers, specify a different CRL distribution point, and/or be signed with a different key. Re-key of a certificate does not require a change to the subjectName and does not violate the requirement for name uniqueness. The old certificate may or may not be revoked, but must not be further re-keyed, renewed, or modified.
 
 Certificate re-keying is not supported. Any re-key request will be treated as a new certificate issuance request.
 
@@ -556,11 +464,8 @@ No stipulation.
 
 ## 4.9 Certificate Revocation and Suspension
 
-Certificate Revocation in the Corda Network is still being finalised and aspects could change in the future. In particular it is likely that revocation of Corda Nodes could be implemented by an entirely separate mechanism to the Certificate Revocation List (CRL) facility provided by X. certificates.
-
-CAs operating under this policy shall issue CRLs covering all unexpired certificates issued under this policy except for OCSP responder.
-
-CAs operating under this policy shall make public a description of how to obtain revocation information for the certificates they publish, and an explanation of the consequences of using dated revocation information. This information shall be given to subscribers during certificate request or issuance and shall be readily available to any potential relying party.
+Each CA operating under this policy shall issue CRLs covering all unexpired certificates issued by that authority under this policy. 
+CAs operating under this policy shall make public a description of how to obtain revocation information for the certificates they publish, and an explanation of the consequences of using dated revocation information. This information shall be given to Subscribers during certificate request or issuance and shall be readily available to any potential Relying Party.
 
 Revocation requests must be authenticated. See Section 3.2 for more details.
 
@@ -570,19 +475,19 @@ Certificate suspension is not allowed by this policy.
 
 A certificate shall be revoked when the binding between the subject and the subject’s public key defined within the certificate is no longer considered valid. Examples of circumstances that invalidate the binding are:
 
-* Identifying information or affiliation components of any names in the certificate becomes invalid:
-* Privilege attributes asserted in the subscriber’s certificate are reduced;
-* The subscriber can be shown to have violated the stipulations of its subscriber agreement;
-* There is reason to believe the private key has been compromised; _or_
-* The subscriber or other authorized party (as defined in the CPS) asks for his/her certificate to be revoked.
+* Identifying information or affiliation components of any names in the certificate become invalid;
+* Privilege attributes asserted in the Subscriber’s certificate are reduced;
+* The Subscriber can be shown to have violated the stipulations of its Subscriber agreement;
+* There is reason to believe the private key has been compromised; or
+* The Subscriber or other authorized party (as defined in the CPS) asks for his/her certificate to be revoked.
 
-Whenever any of the above circumstances occur, the associated certificate shall be revoked and placed on the CRL. Revoked certificates shall be included on all new publications of the certificate status information until the certificates expire.
+Whenever any of the above circumstances occur, the associated certificate shall be revoked and placed on the appropriate CRL. Revoked certificates shall be included on all new publications of the certificate status information until the certificates expire.
 
 ### 4.9.2 Who Can Request Revocation
 
-Within the the Corda Network, a CA may summarily revoke certificates within its domain. A written notice and brief explanation for the revocation shall subsequently be provided to the subscriber. The RA can request the revocation of a subscriber’s certificate on behalf of any authorized party as specified in the CPS.
+Within the Corda Network, a CA may summarily revoke certificates within its domain. A written notice and brief explanation for the revocation shall subsequently be provided to the Subscriber. The RA can request the revocation of a Subscriber’s certificate on behalf of any authorized party as specified in the CPS.
 
-A subscriber may request that its own certificate be revoked. The AOR of the organization that owns or controls a device can request the revocation of the device’s certificate. Other authorized individuals of the organization may request revocation as described in the CPS.
+A Subscriber may request that its own certificate be revoked. The AOR of the organization that owns or controls a device can request the revocation of the device’s certificate. Other authorized individuals of the organization may request revocation as described in the CPS.
 
 ### 4.9.3 Procedure for Revocation Request
 
@@ -604,13 +509,13 @@ No stipulation.
 
 CRLs shall be issued periodically per the CPS. Certificate status information may be issued more frequently than the issuance frequency described below. Certificate status information shall be published no later than the next scheduled update. This will facilitate the local caching of certificate status information for off-line or remote (laptop) operation.
 
-CAs that issue certificates to subscribers or operate on-line must issue on a defined cycle.
+CAs that issue certificates to Subscribers or operate on-line must issue on a defined cycle.
 
 Circumstances related to emergency CRL issuance are specified in section 4.9.12.
 
 ### 4.9.8 Maximum Latency for CRLs
 
-CRLs shall be published within 4 hours of generation. Furthermore, each CRL shall be published no later than the time specified in the _nextUpdate_ field of the previously issued CRL for same scope.
+CRLs shall be published within 4 hours of generation. Furthermore, each CRL shall be published no later than the time specified in the *nextUpdate* field of the previously issued CRL for same scope.
 
 ### 4.9.9 On-Line Revocation/Status Checking Availability
 
@@ -624,16 +529,14 @@ Relying party client software may optionally support on-line status checking. Cl
 
 A CA may also use other methods to publicize the certificates it has revoked. Any alternative method must meet the following requirements:
 
-* The alternative method must be described in the CA’s approved CPS;
-* The alternative method must provide authentication and integrity services commensurate
- with the assurance level of the certificate being verified;
-* The alternative method must meet the issuance and latency requirements for CRLs stated in Sections 4.9.7 and 4.9.8; _and_
+*The alternative method must be described in the CA’s approved CPS;
+* The alternative method must provide authentication and integrity services commensurate with the assurance level of the certificate being verified;
+* The alternative method must meet the issuance and latency requirements for CRLs stated in Sections 4.9.7 and 4.9.8; *and*
 * Components involved in creation of revocation information including providing authentication and integrity services must meet the security requirements for CSS as stated in this CP.
 
 ### 4.9.12 Special Requirements Related to Key Compromise
 
-Certificate revocation for reason of key compromise must appear in a published CRL (or OCSP
-response) within an agreed time period of the decisions to revoke.
+Certificate revocation for reason of key compromise must appear in a published CRL within an agreed time period of the decisions to revoke.
 
 ### 4.9.13 Circumstances for Suspension
 
@@ -689,11 +592,11 @@ Session key encapsulation and recovery is not supported
 
 # 5 Facility, Management, and Operational Controls
 
-**Note to reviewer:** This section is adopted mostly unchanged from NISTIR 7924, and it intended to apply to all current and future Corda Network Operators.
+**Note to reviewer:** This section is adopted mostly unchanged from NISTIR 7924, and is intended to apply to all current and future Corda Network CAs.
 
 ## 5.1 Physical Controls
 
-All CA and RA equipment, including cryptographic modules, shall be protected from theft, loss, and unauthorized access at all times. Unauthorized use of CA and RA equipment is prohibited. CA equipment shall be dedicated to performing CA functions. RA equipment shall be operated to ensure that the equipment meets all physical controls at all times.
+All CA and RA equipment, including cryptographic modules, shall be appropriately protected against theft, loss, and unauthorized access at all times. Unauthorized use of CA and RA equipment is prohibited. CA equipment shall be dedicated to performing CA functions. RA equipment shall be operated in a manner appropriately designed to confirm that the equipment meets all physical controls at all times.
 
 ### 5.1.1 Site Location and Construction
 
@@ -703,29 +606,28 @@ The location and construction of the facility housing the CA equipment, as well 
 
 ##### 5.1.2.1 Physical Access for CA Equipment
 
-Physical access to CA equipment shall be limited to CA Operations Staff and Security Auditors. The security mechanisms shall be commensurate with the level of threat in the equipment environment.
+Physical access to CA equipment shall be limited to CA operations staff (CA Operations Staff) and security auditors of the CA (Security Auditors). The security mechanisms shall be commensurate with the level of threat in the equipment environment.
 
 At a minimum, physical access controls for CA equipment and all copies of the CA cryptographic module shall meet the following requirements:
 
-* Ensure that no unauthorized access to the hardware is permitted;
+* Provide robust protection against unauthorized access to the hardware;
 * Be manually or electronically monitored for unauthorized intrusion at all times;
 * Ensure an access log is maintained and inspected periodically;
-* Mandate at least two-person access requirements. At least one individual shall be a mem ber of the CA Operations Staff. Technical or mechanical mechanisms (e.g., dual locks) should be used to enforce the two-person physical access control; _and_
-* Other individuals shall be escorted by CA operations staff. This includes maintenance personnel. All individuals shall be recorded in the access log.
+* Mandate at least two-person access requirements. At least one individual shall be a member of the CA Operations Staff. Technical or mechanical mechanisms (e.g., dual locks) should be used to enforce the two-person physical access control; and
+* Other individuals shall be escorted by CA Operations Staff. This includes maintenance personnel. All individuals shall be recorded in the access log.
 
 When not in use, removable CA cryptographic modules, removable media, and any activation information used to access or enable CA cryptographic modules or CA equipment, or paper containing sensitive plain-text information, shall be placed in locked containers sufficient for housing equipment and information commensurate with the sensitivity, or value, of the information being protected by the certificates issued by the CA. Access to the contents of the locked containers shall be restricted to individuals holding CA trusted roles as defined in Section 5.2.1, utilizing two-person access controls, and two-person integrity while the container is unlocked.
 
-CA cryptographic modules held within the work area for intermittent use throughout the day may be kept under one lock, as long as they are stored in an area where there are at least two persons physically present at all times. Knowledge of the combination or access to the key used to secure the lock shall be restricted to authorized individuals only. When in active use, the cryptographic module shall be locked into the system or container (rack, reader, server, etc.) using a physical lock under the control of the CA Operations Staff to prevent unauthorized removal.
+CA cryptographic modules held within the work area for intermittent use throughout the day may be kept under one lock, as long as they are stored in an area where there are at least two persons physically present at all times. Knowledge of the combination or access to the key used to secure the lock shall be restricted to authorized individuals only. When in active use, the cryptographic module shall be locked into the system or container (rack, reader, server, etc.) using a physical lock under the control of the CA Operations Staff to help prevent unauthorized removal.
 
 Any activation information used to access or enable the cryptographic modules or CA equipment shall be stored separately from the associated modules and equipment. Such information shall either be memorized or recorded and stored in a manner commensurate with the security afforded the associated cryptographic module or equipment. Where activation information is split across multiple materials in the custody of separate, named individuals, single person access controls and integrity provision per storage location is sufficient.
 
 A security check of the room/rack housing CA equipment shall occur prior to leaving the room/rack unattended by the CA Operations Staff. The check shall verify the following:
 
-* The equipment is in a state appropriate to the current mode of operation (e.g., that cryptographic modules are in
-place when “open”, and secured when “closed”);
-* Any security containers are properly secured;
-* Physical security systems (e.g., door locks, vent covers) are functioning properly; _and_
-* The area is secured against unauthorized access.
+* The equipment is in a state appropriate to the current mode of operation (e.g., that cryptographic modules are in place when “open”, and protected when “closed”);
+* Any security containers are properly protected;
+* Physical security systems (e.g., door locks, vent covers) are functioning properly; *and*
+* The area is otherwise reasonably protected against unauthorized access.
 
 If unattended, the facility housing CA equipment should be protected by an intrusion detection system (IDS).
 
@@ -733,7 +635,7 @@ If a facility is not continuously attended and does not include an IDS, regular 
 
 #### 5.1.2.2 Physical Access for RA Equipment
 
-RA equipment shall be protected from unauthorized access.
+RA equipment shall be appropriately protected against unauthorized access.
 
 Any activation information used to access or enable the RA equipment shall be stored separately from the associated modules and equipment. Such information shall either be memorized or recorded and stored in a manner commensurate with the security afforded any associated cryptographic module or equipment.
 
@@ -743,7 +645,7 @@ Physical access control requirements for CSS equipment (if implemented), shall m
 
 ### 5.1.3 Power and Air Conditioning
 
-The CA shall have backup power capability sufficient to lock out input, finish any pending actions, and record the state of the equipment automatically before lack of power or air conditioning causes a shutdown. The repositories (containing CA certificates and CRLs) shall be provided with uninterrupted power sufficient a defined period of operation in the absence of commercial power, to maintain availability and avoid denial of service.
+The CA shall have backup power capability sufficient to lock out input, finish any pending actions, and record the state of the equipment automatically before lack of power or air conditioning causes a shutdown. The repositories (containing CA certificates and CRLs) shall be provided with uninterrupted power sufficient to provide a defined period of operation in the absence of commercial power, to maintain availability and designed to avoid denial of service.
 
 ### 5.1.4 Water Exposures
 
@@ -757,19 +659,19 @@ No stipulation.
 
 ### 5.1.6 Media Storage
 
-Media shall be stored so as to protect it from accidental damage (water, fire, electromagnetic) and unauthorized physical access. Media not required for daily operation or not required by policy to remain with the CA or RA, that contains security audit, archive, or backup information shall be stored securely in a location separate from the CA or RA equipment.
+Media shall be stored with reasonable measures designed to protect it against accidental damage (water, fire, electromagnetic) and unauthorized physical access. Media not required for daily operation or not required by policy to remain with the CA or RA, that contains security audit, archive, or backup information shall be stored in a protected location separate from the CA or RA equipment.
 
 Media containing private key material shall be handled, packaged, and stored in a manner compliant with the requirements for the sensitivity level of the information it protects or provides access. Storage protection of CA and RA private key material shall be consistent with stipulations in Section 5.1.2.
 
 ### 5.1.7 Waste Disposal
 
-CA and RA Operations Staff shall remove and destroy normal office waste in accordance with local policy. Media used to collect or transmit privacy information shall be destroyed, such that the information is unrecoverable, prior to disposal. Sensitive media and paper shall be destroyed in accordance with the applicable policy for destruction of such material.
+CA and RA Operations Staff shall remove and destroy normal office waste in accordance with local policy. Media used to collect or transmit privacy information shall be destroyed in a manner reasonably designed to make the information unrecoverable, prior to disposal. Sensitive media and paper shall be destroyed in accordance with the applicable policy for destruction of such material.
 
-Appropriate procedures for the secure destruction of media and documentation containing sensitive information, such as private key material, must be developed and included in the CA or RA CSP.
+Appropriate procedures for the appropriate destruction of media and documentation containing sensitive information, such as private key material, must be developed and included in the CA or RA CPS.
 
 ### 5.1.8 Off-Site Backup
 
-A system backup shall be made when a CA system is activated. If the CA system is operational for more than a week, backups shall be made at least once per week **or whenever changes are made to the CA system**. Backups shall be stored offsite. Only the latest backup needs to be retained. The backup shall be stored at a site with physical and procedural controls commensurate to that of the operational CA system.
+A system backup shall be made when a CA system is activated. If the CA system is operational for more than a week, backups shall be made at least once per week **or whenever changes are made to the CA system.** Backups shall be stored offsite. Only the latest backup needs to be retained. The backup shall be stored at a site with physical and procedural controls commensurate to that of the operational CA system.
 
 ## 5.2 Procedural Controls
 
@@ -777,25 +679,24 @@ A system backup shall be made when a CA system is activated. If the CA system is
 
 A trusted role is one whose incumbent performs functions that can introduce security problems if not carried out properly, whether accidentally or maliciously. It is essential that the people selected to fill these roles shall be held accountable to perform designated actions correctly or the integrity of the CA is weakened. The functions performed in these roles form the basis trust in the CA. Two approaches are taken to increase the likelihood that these roles can be successfully carried out.
 
-The first approach is to minimize the number of trusted roles and ensure that the people filling those roles are trustworthy and properly trained. The second is to enforce the concept of least privilege and distribute the functions of the roles among several people, so that any malicious activity requires collusion.
+The first approach is to minimize the number of trusted roles and take reasonable measures to confirm that the people filling those roles are trustworthy and properly trained. The second is to enforce the concept of least privilege and distribute the functions of the roles among several people, so that any malicious activity requires collusion.
 
 Trusted role operations include:
 
 * The validation, authentication, and handling of information in Certificate Applications;
 * The acceptance, rejection, or other processing of Certificate Applications, revocation re quests, renewal requests, or enrolment information;
-* The issuance, or revocation of Certificates, including personnel having access to restricted portions of its repository;
-* Access to safe combinations and/or keys to security containers that contain materials sup porting portions of its
-repository;
-* Access to hardware security modules (HSMs), their associated key material, and the secret share splits of the PINS that protect access to the HSMs;
+* The issuance, or revocation of certificates, including personnel having access to restricted portions of its repository;
+* Access to protected combinations and/or keys to security containers that contain materials supporting portions of its repository;
+* Access to hardware security modules (HSMs), their associated key material, and the secret share splits of the PINS that are designed to protect access to the HSMs;
 * Providing enterprise customer support;
-* Access to any source code for the digital certificate applications or systems;
+* Access to any source code for the digital Certificate Applications or systems;
 * Access to restricted portions of the certificate repository;
-* The ability to grant physical and/or logical access to the CA equipment; _or_
+* The ability to grant physical and/or logical access to the CA equipment; or
 * The ability to administer the background investigation policy processes.
 
-The only mandatory trusted roles defined by this policy are the Administrators, CA Operations Staff, the RA Operations Staff and Security Auditors. Multiple people may hold the same trusted role, with collective privileges sufficient to fill the role. Other trusted roles may be defined in other documents, which describe or impose requirements on the CA operation.
+The only mandatory trusted roles defined by this policy are the administrators, CA Operations Staff, the RA Operations Staff and Security Auditors. Multiple people may hold the same trusted role, with collective privileges sufficient to fill the role. Other trusted roles may be defined in other documents, which describe or impose requirements on the CA operation.
 
-The CA shall maintain lists, including names, organizations, contact information, and organizational affiliation for those who act in Administrator, CA Operations Staff, RAs, and Security Auditor trusted roles, and shall make them available during compliance audits. The RA shall maintain lists, including names, organizations, and contact information of those who act in RA Operations Staff, RA Administrators, and RA Security Auditor roles for that RA.
+The CA shall maintain lists, including names, organizations, contact information, and organizational affiliation for those who act in administrator, CA Operations Staff, RAs, and Security Auditor trusted roles, and shall make them available during compliance audits. The RA shall maintain lists, including names, organizations, and contact information of those who act in RA Operations Staff, RA administrators, and RA Security Auditor roles for that RA.
 
 #### 5.2.1.1 Administrator
 
@@ -808,17 +709,17 @@ The administrator role shall be responsible for:
 * Configuring CSS response profiles;
 * Generating and backing up CA and CSS keys;
 * Controlling and managing CA cryptographic modules;
-* System backups and recovery; _and_
+* System backups and recovery; *and*
 * Changing recording media.
 
-Administrators do not issue certificates to subscribers.
+Administrators do not issue certificates to Subscribers.
 
 #### 5.2.1.2 CA Operation Staff
 
-The CA Operation Staff role shall be responsible for issuing certificates, that is:
+The CA operation staff role shall be responsible for issuing certificates, that is:
 
-* Registering new subscribers and requesting the issuance of certificates;
-* Verifying the identity of subscribers and accuracy of information included in certificates;
+* Registering new Subscribers and requesting the issuance of certificates;
+* Verifying the identity of Subscribers and accuracy of information included in certificates;
 * Approving and executing the issuance of certificates;
 * Requesting, approving and executing the revocation of certificates;
 * Approving infrastructure certificates issued to support the operations of the CA;
@@ -826,8 +727,8 @@ The CA Operation Staff role shall be responsible for issuing certificates, that 
 * Approving certificates issued to RAs;
 * Authorizing RAs;
 * Approving revocation of certificates issued to RAs;
-* Providing Certificate revocation and suspension status information as part of a CSS (if implemented); _and_
-* Posting Certificates and CRLs.
+* Providing certificate revocation and suspension status information as part of a CSS (if implemented); *and*
+* Posting certificates and CRLs.
 
 #### 5.2.1.3 Auditor
 
@@ -837,26 +738,26 @@ Security Auditors are responsible for reviewing, maintaining, and archiving audi
 
 #### 5.2.1.4 RA Staff
 
-RA Staff are the individuals holding trusted roles that operate and manage RA components. RA Staff is responsible for the following:
+RA staff (RA Staff) are the individuals holding trusted roles that operate and manage RA components. RA Staff is responsible for the following:
 
 * Installation, configuration, and maintenance of the RA;
 * Establishing and maintaining RA operating system and application accounts;
-* Routine operation of the RA equipment such as system backup and recovery or changing
- recording media;
+* Routine operation of the RA equipment such as system backup and recovery or changing recording media;
 * Registering new Subscriber and requesting the issuance of certificates;
 * Verifying the identity of Subscribers;
 * Verifying the accuracy of information included in certificates;
-* Approving and executing the issuance of certificates; _and_
+* Approving and executing the issuance of certificates; *and*
 * Requesting, approving, and executing the suspension, restoration, and revocation of certificates.
 
 ### 5.2.2 Number of Persons Required per Task
+
 Where multi-party control is required, all participants shall hold a trusted role. Multi-party control shall not be achieved using personnel that serve in a Security Auditor role with the exception of audit functions. The following tasks shall require two or more persons:
 
 * Generation, and backup of CA keys;
 * Activation of root and intermediate CA keys (note that operational CA keys, such as the doorman key may be activated by a single person with multi-factor authentication).
 * Performance of CA administration or maintenance tasks;
 * Archiving or deleting CA audit logs. At least one of the participants shall serve in a Security Auditor role;
-* Physical access to CA equipment; _or_
+* Physical access to CA equipment; *or*
 * Access to any copy of the CA cryptographic module.
 
 ### 5.2.3 Identification and Authentication for Each Role
@@ -867,7 +768,7 @@ CA and RA equipment shall require, at a minimum, strong authenticated access con
 
 CA and RA equipment shall require, at a minimum, authenticated access control (e.g., strong passwords) for local multi-party access.
 
-Individuals holding trusted roles shall be appointed to the trusted role by an appropriate approving authority. The approval shall be recorded in a secure and auditable fashion. Individuals holding trusted roles shall accept the responsibilities of the trusted role, and this acceptance shall be recorded in a secure and auditable fashion.
+Individuals holding trusted roles shall be appointed to the trusted role by an appropriate approving authority. The approval shall be recorded in a protected and auditable fashion. Individuals holding trusted roles shall accept the responsibilities of the trusted role, and this acceptance shall be recorded in a protected and auditable fashion.
 
 Identity proofing of the RA shall be performed by a member of the CA Operations Staff.
 
@@ -891,13 +792,13 @@ An individual that performs any trusted role shall only have one identity when a
 
 ## 5.3 Personnel Controls
 
-Personnel Security plays a critical role in the CA facility’s overall security system. Personnel Security shall be designed to prevent both unauthorized access to the CA facility and CA systems and compromise of sensitive CA operations by CA personnel.
+Personnel security plays a critical role in the CA facility’s overall security system. Personnel security shall be designed to prevent both unauthorized access to the CA facility and CA systems and compromise of sensitive CA operations by CA personnel.
 
 Inadequate personnel security procedures or negligent enforcement of personnel security policies can pose potentially devastating threats to security. These threats can include unauthorized access, data loss and corruption, denial of service, and even facility sabotage and terrorism. Such events can erode or destroy customer confidence in the CA.
 
 ### 5.3.1 Qualifications, Experience, and Clearance Requirements
 
-Personnel seeking to become Trusted Persons shall present proof of the requisite background, qualifications and experience needed to perform their prospective job responsibilities competently and satisfactorily.
+Personnel seeking to become trusted persons under this CP (trusted role) shall present proof of the requisite background, qualifications and experience needed to perform their prospective job responsibilities competently and satisfactorily.
 
 Individuals appointed to any trusted role shall meet the following:
 
@@ -910,25 +811,23 @@ Individuals appointed to any trusted role shall meet the following:
 
 ### 5.3.2 Background Check Procedures
 
-**Note to reviewer:** Background checks are not currently undertaken for R3 personnel. This will be changed in the near future and background checks for all CA personnel will be brought into line with this, and retrospective background checks will be carried out for all persons fulfilling trusted roles. Should any person fail to pass a retrospective background check, the Corda Network Policy Authority must be notes, and a security incident raised. The Policy Authority will decide such remedial action as is necessary to preserve the integrity of the network CA.
+Persons fulfilling trusted roles shall pass a comprehensive background check.
 
-Persons fulfilling Trusted Roles shall pass a comprehensive background check.
-
-Prior to commencement of employment in a Trusted Role, the CA shall conduct background checks (in accordance with local privacy laws) which will include a reasonable subset of the following:
+Prior to commencement of employment in a trusted role, the CA shall conduct background checks (in accordance with local privacy laws) which will include a reasonable subset of the following:
 
 * Confirmation of previous employment;
 * Check of professional reference;
 * Confirmation of the highest or most relevant educational degree obtained;
 * Search of criminal records (local, state or provincial, and national);
 * Check of credit/financial records;
-* Search of driver’s license records; _and_
+* Search of driver’s license records; *and*
 * Identification verification via National Identity Check (e.g., Social Security Administration records as applicable.
 
-Factors revealed in a background check that should be considered grounds for rejecting candidates for Trusted Roles or for taking action against an existing Trusted Person generally include (but are not limited to) the following:
+Factors revealed in a background check that should be considered grounds for rejecting candidates for trusted roles or for taking action against an existing trusted person generally include (but are not limited to) the following:
 
 * Misrepresentations made by the candidate or Trusted Person;
 * Highly unfavourable or unreliable professional references;
-* Certain criminal convictions; _and_
+* Certain criminal convictions; *and*
 * Indications of a lack of financial or personal responsibility.
 
 ### 5.3.3 Training Requirements
@@ -938,12 +837,12 @@ All personnel performing duties with respect to the operation of the CA, CSS or 
 * CA/CSS/RA security principles and mechanisms;
 * All PKI software versions in use on the CA/CSS/RA system;
 * All PKI duties they are expected to perform;
-* Disaster recovery and business continuity procedures; _and_
+* Disaster recovery and business continuity procedures; *and*
 * Stipulations of this policy.
 
 ### 5.3.4 Retraining Frequency and Requirements
 
-All individuals responsible for PKI Trusted Roles shall be made aware of changes in the CA, CSS, RA operation. Any significant change to the operations shall have a training (awareness) plan, and the execution of such plan shall be documented. Examples of such changes are CA software or hardware upgrade, changes in automated security systems, and relocation of equipment.
+All individuals responsible for trusted roles shall be made aware of changes in the CA, CSS, RA operation. Any significant change to the operations shall have a training (awareness) plan, and the execution of such plan shall be documented. Examples of such changes are CA software or hardware upgrade, changes in automated security systems, and relocation of equipment.
 
 Documentation shall be maintained identifying all personnel who received training and the level of training completed.
 
@@ -953,17 +852,17 @@ No stipulation.
 
 ### 5.3.6 Sanctions for Unauthorized Actions
 
-Appropriate administrative and disciplinary actions as documented in organization policy shall be taken against personnel who perform unauthorized actions (i.e., not permitted by this CPS or other policies) involving the CA’s systems, the certificate status verification systems, and the repository. Disciplinary actions shall be commensurate with the frequency and severity of the unauthorized actions.
+Appropriate administrative and disciplinary actions as documented in organization policy shall be taken against personnel who perform unauthorized actions (i.e., not permitted by this CP or other policies) involving the CA’s systems, the certificate status verification systems, and the repository. Disciplinary actions shall be commensurate with the frequency and severity of the unauthorized actions.
 
 ### 5.3.7 Independent Contractor Requirements
 
 Contractor personnel filling trusted roles shall be subject to all requirements stipulated in this document.
 
-Independent contractors who have not completed or passed the background check procedures specified above shall be permitted access to the CA’s secure facilities only to the extent they are escorted and directly supervised by a person holding trusted role at all times.
+Independent contractors who have not completed or passed the background check procedures specified above shall be permitted access to the CA’s protected facilities only to the extent they are escorted and directly supervised by a person holding trusted role at all times.
 
 ### 5.3.8 Documentation Supplied to Personnel
 
-Documentation sufficient to define duties and procedures for each role shall be provided to the personnel filling that role.
+Documentation sufficient to define duties and procedures for each role shall be provided to the personnel filling that role.!
 
 ## 5.4 Audit Logging Procedures
 
@@ -975,12 +874,12 @@ All security auditing capabilities of CA, CSS, and RA operating system and appli
 
 * The type of event;
 * The date and time the event occurred;
-* Success or failure where appropriate, _and_
+* Success or failure where appropriate, *and*
 * The identity of the entity and/or operator that caused the event.
 
 A message from any source requesting an action by the CA, CSS or RA is an auditable event; the corresponding audit record must also include message date and time, source, destination, and contents.
 
-Further details of types of events recorded are included in the relevant CSP.
+Further details of types of events recorded are included in the relevant CPS.
 
 ### 5.4.2 Frequency of Processing Log
 
@@ -992,7 +891,7 @@ Real-time automated analysis tools should be used. All alerts generated by such 
 
 ### 5.4.3 Retention Period for Audit Logs
 
-Audit logs shall be retained on-site for a period defined in the relevant CSP, in addition to being archived as described in section 5.5. The individual who removes audit logs from the CA system shall be an official different from the individuals who, in combination, command the CA signature key. For the CSS and RA, a System Administrator other than the CSS operator or RA shall be responsible for managing the audit log.
+Audit logs shall be retained on-site for a period defined in the relevant CPS, in addition to being archived as described in section 5.5. The individual who removes audit logs from the CA system shall be an official different from the individuals who, in combination, command the CA signature key. For the CSS and RA, a system administrator other than the CSS operator or RA shall be responsible for managing the audit log.
 
 ### 5.4.4 Protection of Audit Log
 
@@ -1008,7 +907,7 @@ Audit logs and audit summaries shall be backed up on a defined schedule.
 
 ### 5.4.6 Audit Collection System (Internal vs. External)
 
-The audit log collection system may or may not be external to the CA/CSS/RA system. Automated audit processes shall be invoked at system or application start-up, and cease only at system or application shutdown. Audit collection systems shall be configured such that security audit data is protected against loss (e.g., overwriting or overflow of automated log files). Should it become apparent that an automated audit system has failed; CA/CSS/RA operations shall be suspended until the security audit capability can be restored
+The audit log collection system may or may not be external to the CA/CSS/RA system. Automated audit processes shall be invoked at system or application start-up, and cease only at system or application shutdown. Audit collection systems shall be configured such that security audit data is protected against loss (e.g., overwriting or overflow of automated log files). Should it become apparent that an automated audit system has failed; CA/CSS/RA operations shall be suspended until the security audit capability can be restored.
 
 ### 5.4.7 Notification to Event-Causing Subject
 
@@ -1032,9 +931,9 @@ Archive records must be retained for the lifetime of the Corda Network without a
 
 No unauthorized user shall be permitted to write to, modify, or delete the archive. For the CA and CSS, the authorized individuals are Security Auditors. For the RA, authorized individuals are someone other than the RA.
 
-For the CA/CSS/RA, archived records may be moved to another medium. The contents of the archive shall not be released except in accordance with sections 9.3and 9.4. Records of individual transactions may be released upon request of any subscribers involved in the transaction or their legally recognized agents.
+For the CA/CSS/RA, archived records may be moved to another medium. The contents of the archive shall not be released except in accordance with sections 9.3and 9.4. Records of individual transactions may be released upon request of any Subscribers involved in the transaction or their legally recognized agents.
 
-Archive media shall be stored in a safe, secure storage facility separate from the CA/CSS/RA with physical and procedural security controls equivalent to or better than those of the CA/CSS/RA. If the original media cannot retain the data for the required period, a mechanism to periodically transfer the archived data to new media shall be defined by the archive site.
+Archive media shall be stored in a protected storage facility separate from the CA/CSS/RA with physical and procedural security controls equivalent to or better than those of the CA/CSS/RA. If the original media cannot retain the data for the required period, a mechanism to periodically transfer the archived data to new media shall be defined by the archive site.
 
 ### 5.5.4 Archive Backup Procedures
 
@@ -1054,36 +953,34 @@ Procedures, detailing how to create, verify, package, transmit, and store the CA
 
 ## 5.6 Key Changeover
 
-To minimize risk from compromise of a CA’s private signing key, that key may be changed often. From that time on, only the new key will be used to sign CA and subscriber certificates. If the old private key is used to sign OCSP responder certificates or CRLs that cover certificates signed with that key, the old key must be retained and protected.
+To minimize risk from compromise of a CA’s private signing key, that key may be changed often. From that time on, only the new key will be used to sign CA and Subscriber certificates. If the old private key is used to sign OCSP responder certificates or CRLs that cover certificates signed with that key, the old key must be retained and protected.
 
 The CA’s signing key shall have a validity period as described in section 6.3.2.
 
-When a CA updates its private signature key and thus generates a new public key, the CA shall notify all CAs, RAs, and subscribers that rely on the CA’s certificate that it has been changed. When a CA that distributes self-signed certificates updates its private signature key, the CA shall generate key rollover certificates, where the new public key is signed by the old private key, and vice versa. This permits acceptance of newly issued certificates and CRLs without distribution of the new self-signed certificate to current users. Key rollover certificates are optional for CAs that do not distribute self-signed certificates.
+When a CA updates its private signature key and thus generates a new public key, the CA shall notify all CAs, RAs, and Subscribers that rely on the CA’s certificate that it has been changed. When a CA that distributes self-signed certificates updates its private signature key, the CA shall generate key rollover certificates, where the new public key is signed by the old private key, and vice versa. This permits acceptance of newly issued certificates and CRLs without distribution of the new self-signed certificate to current users. Key rollover certificates are optional for CAs that do not distribute self-signed certificates.
 
 ## 5.7 Compromise and Disaster Recovery
 
 ### 5.7.1 Incident and Compromise Handling Procedures
 
-CA organizations shall have an Incident Response Plan and a Disaster Recovery Plan.
+CA organizations shall have an incident response plan and a disaster recovery plan.
 
 If compromise of a CA is suspected, an independent, third-party investigation shall be performed in order to determine the nature and the degree of damage. Certificates issued off that CA shall be stopped immediately upon detection of a compromise. If a CA private signing key is suspected of compromise, the procedures outlined in Section 5.7.3 shall be followed. Otherwise, the scope of potential damage shall be assessed in order to determine if the CA needs to be rebuilt, only some certificates need to be revoked, and/or the CA private key needs to be declared compromised. The independent, third-party investigating party shall make the determination that a CA private key has been compromised.
 
 In case of a CSS key compromise, all certificates issued to the CSS shall be revoked and the revocation information shall be published immediately in the most expeditious manner. Subsequently, the CSS shall be re-keyed.
 
-The vendor shall notify the Corda Network Foundation in the case of a root CA or Network Operator CA or notify the superior CA in the case of a subordinate CA if any of the following occur:
+The vendor shall notify the Corda Network Foundation in the case of a root CA or Network   CA or notify the superior CA in the case of a subordinate CA if any of the following occur:
 
 * Suspected or detected compromise of any CA system or subsystem
 * Physical or electronic penetration of any CA system or subsystem
 * Successful denial of service attacks on any CA system or subsystem
-* Any incident preventing a CA from issuing and publishing a CRL or OCSP prior to the time indicated in the _nextUpdate_ field in the currently published CRL or OCSP suspected or detected compromise of a certificate status server (CSS) if:
-** the CSS certificate has a lifetime of more than <72> hours; and
-** the CSS certificate cannot be revoked (e.g., an OCSP responder certificate with the _id-pkix-ocsp-nocheck_ extension)
+* Any incident preventing a CA from issuing and publishing a CRL or OCSP prior to the time indicated in the nextUpdate field in the currently published CRL or OCSP suspected or detected compromise of a certificate status server (CSS) if: **the CSS certificate has a lifetime of more than <72> hours;** and the CSS certificate cannot be revoked (e.g., an OCSP responder certificate with the id-pkix-ocsp-nocheck extension).
 
 ### 5.7.2 Computing Resources, Software, and/or Data Are Corrupted
 
 When computing resources, software, and/or data are corrupted, CAs operating under this policy shall respond as follows:
 
-* Notify Corda Network Foundation or the superior CA as soon as possible.
+* Notify Corda Network Foundation, Network CA, or any superior CA as soon as possible.
 * Ensure that the system’s integrity has been restored prior to returning to operation and determine the extent of loss of data since the last point of backup.
 * If the CA signing keys are not destroyed, the integrity of the system has been restored, and the risk is deemed negligible, re-establish CA operations, giving priority to the ability to generate certificate status information within the CRL issuance schedule.
 * If the CA signing keys are destroyed, the integrity of the system cannot be restored, or the risk is deemed substantial, re-establish CA operations as quickly as possible, giving priority to the generation of a new CA signing key pair.
@@ -1092,34 +989,27 @@ When computing resources, software, and/or data are corrupted, CAs operating und
 
 #### 5.7.3.1 Root CA Compromise Procedures
 
-In the case of the Root CA compromise, the vendor shall notify the Corda Network Governing Body and relying parties via public announcement of the Root CA compromise so that they can revoke any cross certificates issued to the Root CA or any Subordinate CAs and notify all Subscribers and Relying Parties to remove the trusted self-signed certificate from their trust stores. Notification shall be made in an authenticated and trusted manner. Initiation of notification to the Corda Network Governing Body and any cross-certified PKIs shall be made at the earliest feasible time. Initiation of notification to relying parties and subscribers may be made after mediations are in place to ensure continued operation of applications and services. If the cause of the compromise can be adequately addressed and it is determined that the PKI can be securely re-established the vendors shall then generate a new Root CA certificate, solicit requests and issue new Subordinate CA certificates and securely distribute the new Root CA certificate.
+In the case of the root CA (Root CA) compromise, the service provider shall notify the Corda Network Governing Body and Relying Parties via public announcement of the Root CA compromise so that they can revoke any cross certificates issued to the Root CA or any subordinate CAs (Subordinate CA) and notify all Subscribers and Relying Parties to remove the trusted self-signed certificate from their trust stores. Notification shall be made in an authenticated and trusted manner. Initiation of notification to the Corda Network Governing Body and any cross-certified PKIs shall be made at the earliest feasible time. Initiation of notification to Relying Parties and Subscribers may be made after mediations are in place to ensure continued operation of applications and services. If the cause of the compromise can be adequately addressed and it is determined that the PKI can be re-established using appropriate security the vendors shall then generate a new Root CA certificate, solicit requests and issue new Subordinate CA certificates and distribute the new Root CA certificate.
 
 #### 5.7.3.2 Intermediate or Subordinate CA
 
-In the event of an Intermediate or Subordinate CA key compromise, the CA vendor shall notify the Corda Network Foundation and Superior CA. The superior CA shall revoke that CA’s certificate, and the revocation information shall be published immediately in the most expedient, authenticated, and trusted manner but within a period defined by the applicable CSP after the notification. The Compromised CA vendor shall also investigate and report to the Corda Network Governing Body and Superior CA what caused the compromise or loss, and what measures have been taken to preclude recurrence. If the cause of the compromise can be adequately addressed and it is determined that the CA can be securely re-established, then, the CA shall be re- established. Upon re-establishment of the CA, new Subscriber certificates shall be requested and issued.
+In the event of an intermediate or Subordinate CA key compromise, the CA vendor shall notify the Corda Network Foundation, Network CA , and any superior CA. Any superior CA shall revoke that CA’s certificate, and the revocation information shall be published immediately in the most expedient, authenticated, and trusted manner but within a period defined by the applicable CPS after the notification. The compromised CA vendor shall also investigate and report to the Corda Network Governing Body, Network CA , and any superior CA what caused the compromise or loss, and what measures have been taken to preclude recurrence. If the cause of the compromise can be adequately addressed and it is determined that the CA can be re-established with appropriate security, then, the CA shall be re- established. Upon re-establishment of the CA, new Subscriber certificates shall be requested and issued.
 
 For Subordinate CAs, when a Subscriber certificate is revoked because of compromise, suspected compromise, or loss of the private key, a CRL shall be published at the earliest feasible time by the supporting CA, but in no case more than 6 hours after notification.
 
 #### 5.7.3.3 CSS Compromise Procedures
 
-In case of a CSS key compromise, the CA that issued the CSS a certificate shall revoke that certificate, and the
-revocation information shall be published immediately in the most expedient, authenticated, and trusted manner. The CSS
-shall subsequently be re-keyed. If the CSS is self-signed
-and the CSS certificate expiration is more than a period defined by the applicable CSP days
-away, the vendor shall immediately notify the Corda Network Foundation, relying parties,
-and any cross-certified PKIs of the CSS compromise so that they can notify all Subscribers and
-Relying Parties to remove trust in the CSS certificate from each Relying Party application, and
-install the re-keyed certificate.
+In case of a CSS key compromise, the CA that issued the CSS a certificate shall revoke that certificate, and the revocation information shall be published immediately in the most expedient, authenticated, and trusted manner. The CSS shall subsequently be re-keyed. If the CSS is self-signed and the CSS certificate expiration is more than a period defined by the applicable CPS days away, the service provider  shall immediately notify the Corda Network Foundation, Relying Parties, and any cross-certified PKIs of the CSS compromise so that they can notify all Subscribers and Relying Parties to remove trust in the CSS certificate from each Relying Party application, and install the re-keyed certificate.
 
 #### 5.7.3.4 RA Compromise Procedures
 
-In case of an RA compromise, the CA shall disable the RA. In the case that an RA’s key is compromised, the CA that issued the RA certificate shall revoke it, and the revocation information shall be published within a period defined by the applicable CSP in the most expedient, authenticated, and trusted manner. The compromise shall be investigated by the CA in order to determine the actual or potential date and scope of the RA compromise. All certificates approved by that RA since the date of actual or potential RA compromise shall be revoked. In the event that the scope is indeterminate, then the CA compromise procedures in Section 5.7.3.2 shall be followed.
+In case of an RA compromise, the CA shall disable the RA. In the case that an RA’s key is compromised, the CA that issued the RA certificate shall revoke it, and the revocation information shall be published within a period defined by the applicable CPS in the most expedient, authenticated, and trusted manner. The compromise shall be investigated by the CA in order to determine the actual or potential date and scope of the RA compromise. All certificates approved by that RA since the date of actual or potential RA compromise shall be revoked. In the event that the scope is indeterminate, then the CA compromise procedures in Section 5.7.3.2 shall be followed.
 
 ### 5.7.4 Business Continuity Capabilities after a Disaster
 
-CAs shall be required to maintain a Disaster Recovery Plan.
+CAs shall be required to maintain a disaster recovery plan.
 
-In the case of a disaster in which the CA equipment is damaged and inoperative, the CA operations shall be re-established as quickly as possible, giving priority to the ability to revoke Subscriber’s certificates. If the CA cannot re-establish revocation capabilities prior to date and time specified in the _nextUpdate_ field in the currently published CRL issued by the CA, then the inoperative status of the CA shall be reported to the Corda Network Foundation and Superior CA. The Corda Network Governing Body and Superior CA shall decide whether to declare the CA private signing key as compromised and re-establish the CA keys and certificates, or allow additional time for reestablishment of the CA’s revocation capability.
+In the case of a disaster in which the CA equipment is damaged and inoperative, the CA operations shall be re-established as quickly as possible, giving priority to the ability to revoke Subscriber’s certificates. If the CA cannot re-establish revocation capabilities prior to date and time specified in the nextUpdate field in the currently published CRL issued by the CA, then the inoperative status of the CA shall be reported to the Corda Network Foundation, Network CA, and any superior CA. The Corda Network Governing Body, Network CA, and any superior CA shall decide whether to declare the CA private signing key as compromised and re-establish the CA keys and certificates, or allow additional time for reestablishment of the CA’s revocation capability.
 
 In the case of a disaster whereby a CA installation is physically damaged, and all copies of the CA signature key are destroyed as a result, the CA shall request that its certificates be revoked. The CA installation shall then be completely rebuilt by re-establishing the CA equipment, generating new private and public keys, being re-certified, and re-issuing all cross certificates. Finally, all Subscriber certificates will be re-issued. In such events, any Relying Parties who continue to use certificates signed with the destroyed private key do so at their own risk, and the risk of others to whom the data is forwarded, as no revocation information will be available (if the CRL signing key was destroyed).
 
@@ -1133,7 +1023,7 @@ Prior to CA termination, notice shall be provided to all cross-certified CAs req
 * The CA, CSS, and RA shall archive all audit logs and other records prior to termination
 * The CA, CSS, and RA shall destroy all its private keys upon termination
 * The CA, CSS, and RA archive records shall be transferred to an appropriate authority specified in the CPS.
-* If a Root CA is terminated, the Root CA shall use secure means to notify the subscribers to delete all trust anchors representing the terminated CA.
+* If a Root CA is terminated, the Root CA shall use protected means to notify the Subscribers to delete all trust anchors representing the terminated CA.
 
 # 6 Technical controls
 
@@ -1143,7 +1033,7 @@ Prior to CA termination, notice shall be provided to all cross-certified CAs req
 
 #### 6.1.1.1 CA Key Pair Generation
 
-Cryptographic keying material used by CAs to sign certificates, CRLs or status information shall be generated in \[FIPS 140\] Level 3 validated cryptographic modules. Multi-party control is required for CA key pair generation, as specified in section 6.2.2.
+Cryptographic keying material used by CAs to sign certificates, CRLs or status information shall be generated in [FIPS 140] Level 3 validated cryptographic modules. Multi-party control is required for CA key pair generation, as specified in section 6.2.2.
 
 CA key pair generation must create a verifiable audit trail demonstrating that the security requirements for procedures were followed. The documentation of the procedure must be detailed enough to show that appropriate role separation was used. An independent third party shall validate the execution of the key generation procedures either by witnessing the key generation or by examining the signed and documented record of the key generation.
 
@@ -1153,7 +1043,7 @@ No stipulation.
 
 #### 6.1.1.3 Subscriber Key Pair Generation
 
-Subscriber key pair generation will be performed by the subscriber only.
+Subscriber key pair generation will be performed by the Subscriber only.
 
 #### 6.1.1.4 CSS Key Pair Generation
 
@@ -1165,16 +1055,17 @@ Not applicable.
 
 ### 6.1.3 Public Key Delivery to Certificate Issuer
 
-Where key pairs are generated by the subscriber, the public key and the subscriber’s identity must be delivered securely to the CA for certificate issuance. The delivery mechanism shall bind the subscriber’s verified identity to the public key. If cryptography is used to achieve this binding, it must be at least as strong as the CA keys used to sign the certificate.
+Where key pairs are generated by the Subscriber, the public key and the Subscriber’s identity must be delivered in a protected manner to the CA for certificate issuance. The delivery mechanism shall bind the Subscriber’s verified identity to the public key. If cryptography is used to achieve this binding, it must be at least as strong as the CA keys used to sign the certificate.
 
 ### 6.1.4 CA Public Key Delivery to Relying Parties
 
-The public key of a root CA shall be provided to the subscribers acting as relying parties in a secure manner so that it is not vulnerable to modification or substitution. Examples of acceptable methods for delivery of the public key include:
+The public key of a root CA shall be provided to the Subscribers acting as Relying Parties in a protected manner so that it is not vulnerable to modification or substitution. Examples of acceptable methods for delivery of the public key include:
 
-* Secure distribution of self-signed certificates through secure out-of-band mechanisms;
+* Protected distribution of self-signed certificates through protected out-of-band mechanisms;
 * Comparison of the hash of the self-signed certificate against a hash value made available via authenticated out-of-band sources (note that hashes posted in-band along with the certificate are not acceptable as an authentication mechanism);
 
 When a CA updates its signature key pair, the key rollover certificates may be signed with the CA’s current private key; in this case secure distribution is not required.
+
 
 ### 6.1.5 Key Sizes
 
@@ -1198,13 +1089,13 @@ No stipulation.
 
 ### 6.2.1 Cryptographic Module Standards and Controls
 
-The CA shall use a \[FIPS 140\] Level 3 or higher validated hardware cryptographic module for signing operations.
+The CA shall use a [FIPS 140] Level 3 or higher validated hardware cryptographic module for signing operations.
 
 No stipulation with regards cryptographic module standards for RAs.
 
 No stipulation with regards cryptographic module standards for CSSes.
 
-No stipulation with regards cryptographic module standards for subscribers.
+No stipulation with regards cryptographic module standards for Subscribers.
 
 ### 6.2.2 Private Key (N of M) Multi-Person Control
 
@@ -1234,7 +1125,7 @@ No stipulation.
 
 ### 6.2.5 Private Key Archival
 
-CA private signature keys and subscriber private signature keys shall not be archived. CAs that retain subscriber private encryption keys for business continuity purposes shall archive such subscriber private keys in accordance with section 5.5.
+CA private signature keys and Subscriber private signature keys shall not be archived. CAs that retain Subscriber private encryption keys for business continuity purposes shall archive such Subscriber private keys in accordance with section 5.5.
 
 ### 6.2.6 Private Key Transfer into or from a Cryptographic Module
 
@@ -1250,13 +1141,13 @@ No stipulation.
 
 ### 6.2.8 Method of Activating Private Key
 
-The subscriber must be authenticated to the cryptographic token before the activation of the associated private key(s). Acceptable means of authentication include but are not limited to passphrases, PINs or biometrics. Entry of activation data shall be protected from disclosure (i.e., the data should not be displayed while it is entered).
+The Subscriber must be authenticated to the cryptographic token before the activation of the associated private key(s). Acceptable means of authentication include but are not limited to passphrases, PINs or biometrics. Entry of activation data shall be protected from disclosure (i.e., the data should not be displayed while it is entered).
 
-A device may be configured to activate its private key without requiring activation data, provided that appropriate physical and logical access controls are implemented for the device and its cryptographic token. The AOR is responsible for ensuring that the system has security controls commensurate with the level of threat in the device’s environment. These controls shall protect the device’s hardware, software, and the cryptographic token and its activation data from compromise
+A device may be configured to activate its private key without requiring activation data, provided that appropriate physical and logical access controls are implemented for the device and its cryptographic token. The AOR is responsible for ensuring that the system has security controls commensurate with the level of threat in the device’s environment. These controls shall protect the device’s hardware, software, and the cryptographic token and its activation data from compromise.
 
 ### 6.2.9 Method of Deactivating Private Key
 
-Cryptographic modules that have been activated shall not be available to unauthorized access. After use, the cryptographic module shall be deactivated, e.g., via a manual logout procedure or automatically after a period of inactivity as defined in the applicable CPS. CA cryptographic modules shall be removed and stored in a secure container when not in use.
+Cryptographic modules that have been activated shall not be available to unauthorized access. After use, the cryptographic module shall be deactivated, e.g., via a manual logout procedure or automatically after a period of inactivity as defined in the applicable CPS. CA cryptographic modules shall be removed and stored in a protected container when not in use.
 
 ### 6.2.10 Method of Destroying Private Key
 
@@ -1273,13 +1164,14 @@ See section 6.2.1.
 The public key is archived as part of the certificate archival.
 
 ### 6.3.2 Certificate Operational Periods and Key Usage Periods
+
 The usage period for the Root CA key pair is a maximum of 20 years.
 
-The usage period for the Network Operator subordinate CA key pairs is a maximum of 20 years
+The usage period for the Network Operator subordinate CA key pairs is a maximum of 20 years.
 
 The usage period for the Network Operator subject key pairs is a maximum of 20 years.
 
-The usage period for subscriber key pairs is a maximum of 20 years.
+The usage period for Subscriber key pairs is a maximum of 20 years.
 
 ## 6.4 Activation Data
 
@@ -1287,19 +1179,19 @@ The usage period for subscriber key pairs is a maximum of 20 years.
 
 CA activation data may be user-selected (by each of the multiple parties holding that activation data). If the activation data must be transmitted, it shall be via an appropriately protected channel, and distinct in time and place from the associated cryptographic module.
 
-RA and subscriber activation data may be user-selected. The strength of the activation data shall meet or exceed the requirements for authentication mechanisms stipulated for Level 2 in \[FIPS 140\]. If the activation data must be transmitted, it shall be via an appropriately protected channel, and distinct in time and place from the associated cryptographic module.
+RA and Subscriber activation data may be user-selected. The strength of the activation data shall meet or exceed the requirements for authentication mechanisms stipulated for Level 2 in [FIPS 140]. If the activation data must be transmitted, it shall be via an appropriately protected channel, and distinct in time and place from the associated cryptographic module.
+
 
 ### 6.4.2 Activation Data Protection
 
-Data used to unlock private keys shall be protected from disclosure by a combination of cryptographic and physical
-access control mechanisms. Activation data shall be either:
+Data used to unlock private keys shall be protected from disclosure by a combination of cryptographic and physical access control mechanisms. Activation data shall be either:
 
 * Memorized;
 * Biometric in nature; or
-* Recorded and secured at the level of assurance associated with the activation of the
- cryptographic module and shall not be stored with the cryptographic module.
+* Recorded and protected at the level of assurance associated with the activation of the cryptographic module and shall not be stored with the cryptographic module.
 
 ### 6.4.3 Other Aspects of Activation Data
+
 No stipulation.
 
 ## 6.5 Computer Security Controls
@@ -1307,57 +1199,29 @@ No stipulation.
 ### 6.5.1 Specific Computer Security Technical Requirements
 #### 6.5.1.1 Access Control
 
-Access to information such as sensitive details about customer accounts, passwords, and ultimately, CA-related private
-keys should be carefully guarded, along with the machines housing
-such information.
+Access to information such as sensitive details about customer accounts, passwords, and ultimately, CA-related private keys should be carefully guarded, along with the machines housing such information.
 
 #### 6.5.1.2 Access Control Policy and Procedures
 
-The CA shall create and document roles and responsibilities for each employee job function in
-the CPS.
+The CA shall create and document roles and responsibilities for each employee job function in the CPS.
 
-The CA shall create and maintain a mapping of these roles and their associated responsibilities to
-specific employees and their accounts on CA systems.
+The CA shall create and maintain a mapping of these roles and their associated responsibilities to specific employees and their accounts on CA systems.
 
 #### 6.5.1.3 Account Management
 
-Information system account management features shall ensure that users access only that functionality permitted by
-their role or function. All account types with access to information systems
-shall be documented along with the conditions and procedures to follow in creating new accounts. Groups and roles shall
-have a documented relationship to the business or mission roles
-involved in operating the CA.
+Information system account management features shall ensure that users access only that functionality permitted by their role or function. All account types with access to information systems shall be documented along with the conditions and procedures to follow in creating new accounts. Groups and roles shall have a documented relationship to the business or mission roles involved in operating the CA.
 
-Section 5.2.1 of this document defines roles and job functions for personnel that the CA will use
-when defining access control mechanisms. The CA shall employ the principle of least privilege
-when creating users and assigning them to groups and roles; membership to a group or role is
-granted shall be justified based upon business need. The CA shall take appropriate action when
-a user no longer requires an account, their business role changes, or the user is terminated or
-transferred. Periodically, the CA shall review all active accounts to match active authorized users
-with accounts, and disable any accounts no longer associated with an active authorized user.
+Section 5.2.1 of this document defines roles and job functions for personnel that the CA will use when defining access control mechanisms. The CA shall employ the principle of least privilege when creating users and assigning them to groups and roles; membership to a group or role is granted shall be justified based upon business need. The CA shall take appropriate action when a user no longer requires an account, their business role changes, or the user is terminated or transferred. Periodically, the CA shall review all active accounts to match active authorized users with accounts, and disable any accounts no longer associated with an active authorized user.
 
-To assist with the management of the information system accounts, automated systems shall assist
-in maintaining access for only those users who are still authorized to use the information system.
-After an extended period of inactivity, an account shall be automatically disabled and attempts
-to access any deactivated account shall be logged.
+To assist with the management of the information system accounts, automated systems shall assist in maintaining access for only those users who are still authorized to use the information system. After an extended period of inactivity, an account shall be automatically disabled and attempts to access any deactivated account shall be logged.
 
-All account administration activities shall be logged and made available for inspection by appropriate security
-personnel. Account administration activities that shall be audited include account
-creation, modification, enabling, disabling, group or role changes, and removal actions.
+All account administration activities shall be logged and made available for inspection by appropriate security personnel. Account administration activities that shall be audited include account creation, modification, enabling, disabling, group or role changes, and removal actions.
 
-The use of shared/group and guest/anonymous accounts for logon to information systems shall
-be prohibited.
+The use of shared/group and guest/anonymous accounts for logon to information systems shall be prohibited.
 
 #### 6.5.1.4 Least Privilege
 
-In granting rights to accounts and groups, the CA shall employ the principle of least privilege,
-allowing only authorized access for users (and processes acting on behalf of users) which are
-necessary to accomplish assigned tasks in accordance with organizational missions and business
-functions. The CA shall explicitly authorize access to accounts and groups for controlling security
-functions and security-relevant information. The CA shall authorize access to privileged commands and features of
-information systems only for specific, organization-defined compelling operational needs and documents the
-rationale for such access. The CA shall require that users of information systems with access to
-administrative privileges to utilize non-privileged accounts or roles when accessing non-privileged
-functions (such as reading email).
+In granting rights to accounts and groups, the CA shall employ the principle of least privilege, allowing only authorized access for users (and processes acting on behalf of users) which are necessary to accomplish assigned tasks in accordance with organizational missions and business functions. The CA shall explicitly authorize access to accounts and groups for controlling security functions and security-relevant information. The CA shall authorize access to privileged commands and features of information systems only for specific, organization-defined compelling operational needs and documents the rationale for such access. The CA shall require that users of information systems with access to administrative privileges to utilize non-privileged accounts or roles when accessing non-privileged functions (such as reading email).
 
 #### 6.5.1.5 Access Control Best Practices
 
@@ -1371,54 +1235,33 @@ No stipulation.
 
 **System Isolation and Partitioning**
 
-CA systems shall be configured, operated, and maintained so as to ensure the continuous logical
-separation of processes and their assigned resources. This separation shall be enforced by:
+CA systems shall be configured, operated, and maintained so as to ensure the continuous logical separation of processes and their assigned resources. This separation shall be enforced by:
 
 * physical and/or logical isolation mechanisms, such as dedicated systems or virtualization
-* protecting an active process and any assigned resources from access by or interference
- from another process.
-* protecting an inactive process and any assigned resources from access by or interference
- from an active process.
-* ensuring that any exception condition raised by one process will have no lasting detrimental effect on the operation
-or assigned resources of another process.
+* protecting an active process and any assigned resources from access by or interference from another process.
+* protecting an inactive process and any assigned resources from access by or interference from an active process.
+* ensuring that any exception condition raised by one process will have no lasting detrimental effect on the operation or assigned resources of another process.
 
-All trusted components should be logically separated from each other, and shall be logically separated from any
-untrusted components of the CA system. The CPS shall document how it this
-logical isolation of components is accomplished.
+All trusted components should be logically separated from each other, and shall be logically separated from any untrusted components of the CA system. The CPS shall document how it this logical isolation of components is accomplished.
 
-Security critical processes shall be isolated from processes that have external interfaces. For example, the CA signing
-processes shall be isolated from registration processes. The CPS shall outline
-how security critical processes are protected from interference by externally facing processes.
+Security critical processes shall be isolated from processes that have external interfaces. For example, the CA signing processes shall be isolated from registration processes. The CPS shall outline how security critical processes are protected from interference by externally facing processes.
 
-If there are system resources shared amongst trusted and/or untrusted processes, the underlying
-system(s)shall prevent any unauthorized and unintended information transfer between processes
-via those shared system resources.
+If there are system resources shared amongst trusted and/or untrusted processes, the underlying system(s)shall prevent any unauthorized and unintended information transfer between processes via those shared system resources.
 
 **Malicious Code Protection**
 
-The CA system shall employ malicious code protection mechanisms to mitigate the risk of malicious code on CA system
-components. Malicious code on trusted CA components could allow
-an attacker to issue fraudulent certificates, create a rouge intermediate or signing CA server, or
-compromise the availability of the system.
-
+The CA system shall employ malicious code protection mechanisms to mitigate the risk of malicious code on CA system components. Malicious code on trusted CA components could allow an attacker to issue fraudulent certificates, create a rouge intermediate or signing CA server, or compromise the availability of the system.
 **Software and Firmware Integrity**
 
-The CA shall employ technical and procedural controls to prevent and detect unauthorized
-changes to firmware and software on CA systems. Access control mechanisms and configuration
-management processes (see Section 6.5.1.1 and 6.6.2) shall ensure that only authorized system
-administrators are capable of installing or modifying firmware and software on CA systems.
+The CA shall employ technical and procedural controls to prevent and detect unauthorized changes to firmware and software on CA systems. Access control mechanisms and configuration management processes (see Section 6.5.1.1 and 6.6.2) shall ensure that only authorized system administrators are capable of installing or modifying firmware and software on CA systems.
 
 **Information Protection**
 
-The CA shall protect the confidentiality and integrity of sensitive information stored or processed
-on CA systems that could lead to abuse or fraud. For example, the CA shall protect customer data
-that could allow an attacker to impersonate a customer. The CA shall employ technical mechanisms to prevent unauthorized
-changes or accesses to this information, such as access control
-mechanisms that limit which users are authorized to view or modify files. Sensitive information
-stored on devices that are not physically protected from potential attackers shall be stored in an
-encrypted format, using a NIST-approved encryption algorithm and mode of operation.
+The CA shall protect the confidentiality and integrity of sensitive information stored or processed on CA systems that could lead to abuse or fraud. For example, the CA shall protect customer data that could allow an attacker to impersonate a customer. The CA shall employ technical mechanisms to prevent unauthorized changes or accesses to this information, such as access control mechanisms that limit which users are authorized to view or modify files. Sensitive information stored on devices that are not physically protected from potential attackers shall be stored in an encrypted format, using a NIST-approved encryption algorithm and mode of operation.
+
 
 ### 6.5.2 Computer Security Rating
+
 No stipulation.
 
 ## 6.6 Life Cycle Technical Controls
@@ -1451,19 +1294,18 @@ In no case should remediation cause unavailability of revocation information.
 
 ## 6.7 Network Security Controls
 
-The components of the Corda Network Certificate Authority are located behind firewall devices that logically segregate the components of a system into zones, isolating those components according to their value and the need to provide access to those services to network subscribers (network participants, in Corda parlance). The principle of least privilege is used throughout.
+The components of each CA are located behind firewall devices that logically segregate the components of a system into zones, isolating those components according to their value and the need to provide access to those services to network Subscribers (Network Participants, in Corda Network parlance). The principle of least privilege is used throughout.
 
 Appropriate technical controls will be provided to ensure that services are afforded the availability appropriate to the criticality of the services provided. For example, the availability of any revocation services is seen to be more critical that of certificate request and issuance services.
-
-Technical controls will be implemented to ensure the confidentiality and integrity of communications between CA components, CA to RA communications and CA and RA to subscriber communications.
+Technical controls will be implemented to ensure the confidentiality and integrity of communications between CA components, CA to RA communications and CA and RA to Subscriber communications.
 
 Network, host and application monitoring will be in place to track network and host resource thresholds, unauthorized network services, certificate request and access control thresholds.
 
 For operational reasons, there may be a need to perform remote management of some CA resources. The CA will implement such controls as to allow remote management while maintaining the desired security posture.
 
-The CA System shall conduct regular external and internal penetration tests to identify vulnerabilities and attack vectors that can be used to exploit enterprise systems. Results of these tests will be integrated into the vulnerability remediation process.
+The CA system shall conduct regular external and internal penetration tests to identify vulnerabilities and attack vectors that can be used to exploit enterprise systems. Results of these tests will be integrated into the vulnerability remediation process.
 
-The CA System shall conduct regular external and internal penetration tests to identify vulnerabilities and attack vectors that can be used to exploit enterprise systems.
+The CA system shall conduct regular external and internal penetration tests to identify vulnerabilities and attack vectors that can be used to exploit enterprise systems.
 
 ## 6.8 Time-Stamping
 
@@ -1473,18 +1315,17 @@ Asserted times shall be accurate to within three minutes. Electronic or manual p
 
 ## 7.1 Certificate Profile
 
-**Note to reviewer:** The certificate, CRL and OCSP profiles used by Corda nodes and supporting infrastructure has not been finalised. At present, for the purposes of the R3 Testnet, the PKI in which the nodes operate runs a uniform version of the Corda code and therefore the interoperability requirements satisfied by these profiles do not exist. It is recognised that this will not always be the case and that said profiles will be required in the future to facilitate interoperability between heterogeneous nodes and supporting infrastructure. Appropriate profiles will be included in this certificate policy at that time.
-
-### 7.1.1 Version Number (s)
+### 7.1.1 Version Number(s)
 
 Certificates MUST be of type X.509 v3.
 
 ### 7.1.2 Serial Numbers
 
-CAs SHALL generate non-sequential Certificate serial numbers greater than zero (0) containing at least 64 bits of output from a CSPRNG.
+CAs SHALL generate non-sequential certificate serial numbers greater than zero (0) containing at least 64 bits of output from a CSPRNG.
 
 ### 7.1.3 Certificate Cipher Suite and Algorithms
-The Corda Root CA and Subordinate CA Certificates shall sign with the following algorithms:
+
+The Corda Root CA and Subordinate CA certificates shall sign with the following algorithms:
 
 |Certificate|Algorithm|Parameters|Lifetime|
 |-----------|---------|----------|--------|
@@ -1495,7 +1336,8 @@ The Corda Root CA and Subordinate CA Certificates shall sign with the following 
 TLS certificates must follow the TLSv1.2 standard.
 
 ### 7.1.4 Certificate Role Extension
-Corda certificates have a custom X.509 v3 extension that specifies the role the certificate relates to. This extension has the OID 1.3.6.1.4.1.50530.1.1 and is non-critical, so implementations outside of Corda nodes can safely ignore it. The extension contains a single ASN.1 integer identifying the identity type the certificate is for:
+
+Corda Network certificates have a custom X.509 v3 extension that specifies the role the certificate relates to. This extension has the OID 1.3.6.1.4.1.50530.1.1 and is non-critical, so implementations outside of Corda nodes can safely ignore it. The extension contains a single ASN.1 integer identifying the identity type the certificate is for:
 
 |Role|Value|
 |----|-----|
@@ -1530,11 +1372,11 @@ Corda certificates have a custom X.509 v3 extension that specifies the role the 
 
 ### 7.1.7 Certificate Policy Object Identifier
 
-A Root CA Certificate SHOULD NOT contain the certificatePolicies extension.
+A Root CA certificate SHOULD NOT contain the certificatePolicies extension.
 
-A Subordinate CA SHALL represent, in its Certificate Policy and/or Certification Practice Statement, that all Certificates containing a policy identifier indicating compliance with these Requirements are issued and managed in accordance with these Requirements.
+A subordinate CA SHALL represent, in its certification practice statement, that all certificates containing a policy identifier indicating compliance with these requirements are issued and managed in accordance with these requirements.
 
-Subscriber Certificates A Certificate issued to a Subscriber MUST contain one or more policy identifier(s), defined by the Issuing CA, in the Certificate’s certificatePolicies extension that indicates adherence to and compliance with these Requirements. CAs complying with these Requirements MAY also assert one of the reserved policy OIDs in such Certificates. The issuing CA SHALL document in its Certificate Policy or Certification Practice Statement that the Certificates it issues containing the specified policy identifier(s) are managed in accordance with these Requirements
+Subscriber Certificates:  A certificate issued to a Subscriber MUST contain one or more policy identifier(s), defined by the issuing CA, in the certificate’s certificatePolicies extension that indicates adherence to and compliance with these Requirements. CAs complying with these requirements MAY also assert one of the reserved policy OIDs in such certificates. The issuing CA SHALL document in its certification practice statement that the certificates it issues containing the specified policy identifier(s) are managed in accordance with these requirements.
 
 ### 7.1.8 Usage of Policy Constraints Extension
 
@@ -1550,13 +1392,12 @@ No stipulation.
 
 ## 7.2 CRL Profile
 
-Certificate Revocation in the Corda Network is still being finalised and aspects could change in the future. In particular it is likely that revocation of Corda Nodes could be implemented by an entirely separate mechanism to the CRL facility provided by X.509 certificates. Corda Certificates will still define CRL endpoints in case it is required in the future.
+The Root CA shall NOT provide a CRL Distribution Point.
 
-The Root CA SHOULD NOT contain a CRL Distribution Points
+The Subordinate CA may be used to sign a CRL for its subordinate CAs.
 
-The Subordinate CA SHOULD contain a CRL Distribution Point. The CRL SHOULD be signed by a revocation certificate issued by the Root CA.
+Doorman CA shall provide a signed CRL addressing revocation for node CA and node TLS certificates. An entry in the CRL MUST NOT be removed until the expiration date of the certificate being revoked has passed. In other words, once revoked, the certificate must remain in the CRL during its validity period.
 
-An entry in the CRL MUST NOT be removed until the expiration date of the certificate being revoked has passed. In other words, once revoked, the certificate must remain in the CRL during its validity period.
 
 ### 7.2.1 Version Number(s)
 
@@ -1568,15 +1409,7 @@ No stipulation.
 
 ## 7.3 OCSP Profile
 
-Certificate Revocation in the Corda Network is still being finalised and aspects could change in the future. In 
-particular it is likely that revocation of Corda Nodes could be implemented by an entirely separate mechanism to the 
-OCSP facility provided by X.509 certificates. Corda Certificates will still define an OCSP responder in case it is 
-required in the future.
-
-The Root CA SHOULD NOT contain the Authority Information Access extension.
-
-The Subordinate CA MAY contain an Authority Information Access extension. The Access Method SHOULD be set to On-line 
-Certificate Status Protocol. The Authority Key Identifier SHOULD identity a revocation key issued by the Root CA.
+No stipulation.
 
 ### 7.3.1 Version Number(s)
 
@@ -1590,11 +1423,11 @@ No stipulation.
 
 The CAs shall have a compliance audit mechanism in place to ensure that:
 
-* They comply with requirements outlined within this policy and the audit requirements set forth in this section are 
-met; _and_
+* They comply with requirements outlined within this policy and the audit requirements set forth in this section are met; and
 * The requirements of their CPS are implemented and enforced.
-
+* 
 This specification does not impose a requirement for any particular assessment methodology.
+
 
 ## 8.1 Frequency or Circumstances of Assessment
 
@@ -1602,46 +1435,29 @@ CAs and RAs shall be subject to a periodic compliance audit at least once per ye
 
 ## 8.2 Qualifications of Assessor
 
-The auditor must demonstrate competence in the field of compliance audits, and must be thoroughly familiar with the CA’s 
-CPS and this CP. The compliance auditor must perform such compliance audits as a regular ongoing business activity. In 
-addition to the previous requirements, the auditor must be a certified information system auditor (CISA) or IT security 
-specialist, and a PKI subject matter specialist who can offer input regarding acceptable risks, mitigation strategies, 
-and industry best practices.
+TThe auditor must demonstrate competence in the field of compliance audits, and must be thoroughly familiar with the CA’s CPS and this CP. The compliance auditor must perform such compliance audits as a regular ongoing business activity. In addition to the previous requirements, the auditor must be a certified information system auditor (CISA) or IT security specialist, and a PKI subject matter specialist who can offer input regarding acceptable risks, mitigation strategies, and industry best practices.
 
 ## 8.3 Assessor’s Relationship to Assessed Entity
 
-The compliance auditor either shall be a private firm that is independent from the entities (CA and RAs) being audited, 
-or it shall be sufficiently organizationally separated from those entities to provide an unbiased, independent 
-evaluation. To insure independence and objectivity, the compliance auditor may not have served the entity in developing 
-or maintaining the entity’s CA Facility or certificate practices statement. The Policy Authority shall determine whether 
-a compliance auditor meets this requirement.
+The compliance auditor either shall be a private firm that is independent from the entities (CA and RAs) being audited, or it shall be sufficiently organizationally separated from those entities to provide an unbiased, independent evaluation. To insure independence and objectivity, the compliance auditor may not have served the entity in developing or maintaining the entity’s CA Facility or certificate practices statement. The Policy Authority shall determine whether a compliance auditor meets this requirement.
 
 ## 8.4 Topics Covered by Assessment
 
-The purpose of a compliance audit shall be to verify that the CA and its recognized RAs comply with all the requirements 
-of the current versions of this CP and the CA’s CPS. All aspects of the CA/RA operation shall be subject to compliance 
-audit inspections.
+The purpose of a compliance audit shall be to verify that the CA and its recognized RAs comply with all the requirements of the current versions of this CP and the CA’s CPS. All aspects of the CA/RA operation shall be subject to compliance audit inspections.
 
 ## 8.5 Actions Taken as a Result of Deficiency
 
-When the compliance auditor finds a discrepancy between the requirements of this CP or the stipulations in the CPS and 
-the design, operation, or maintenance of the PKI Authorities, the following actions shall be performed:
+When the compliance auditor finds a discrepancy between the requirements of this CP or the stipulations in the CPS and the design, operation, or maintenance of the PKI Authorities, the following actions shall be performed:
 
 * The compliance auditor shall note the discrepancy;
-* The compliance auditor shall notify the parties identified in section 8.6 of the discrepancy; _and_
-* The party responsible for correcting the discrepancy will propose a remedy, including expected time for completion, 
-to the Policy Authority.
+* The compliance auditor shall notify the parties identified in section 8.6 of the discrepancy; and
+* The party responsible for correcting the discrepancy will propose a remedy, including expected time for completion, to the Policy Authority.
 
-Depending upon the nature and severity of the discrepancy, and how quickly it can be corrected, the Policy Authority 
-may decide to temporarily halt operation of the CA or RA, to revoke a certificate issued to the CA or RA, or take other 
-actions it deems appropriate. The Policy Authority will develop procedures for making and implementing such 
-determinations.
+Depending upon the nature and severity of the discrepancy, and how quickly it can be corrected, the Policy Authority may decide to temporarily halt operation of the CA or RA, to revoke a certificate issued to the CA or RA, or take other actions it deems appropriate. The Policy Authority will develop procedures for making and implementing such determinations.
 
 ## 8.6 Communication of Results
 
-An Audit Compliance Report shall be provided to the entity responsible for CA operations. The Audit Compliance Report 
-and identification of corrective measures shall be provided to Policy Authority within defined period of completion. A 
-special compliance audit may be required to confirm the implementation and effectiveness of the remedy.
+An audit compliance report shall be provided to the entity responsible for CA operations. The audit compliance report and identification of corrective measures shall be provided to Policy Authority within defined period of completion. A special compliance audit may be required to confirm the implementation and effectiveness of the remedy.
 
 # 9 Other Business and Legal Matters
 
@@ -1649,34 +1465,29 @@ special compliance audit may be required to confirm the implementation and effec
 
 ### 9.1.1 Certificate Issuance or Renewal Fees
 
-Certificate issuance and renewal fees will be decided by the Corda Network Foundation (CNF) and may be included in a 
-single network access fee. Such fee schedules to be published by the CNF from time to time.
+Certificate issuance and renewal fees will be decided by the Corda Network Foundation (CNF) or the Network Operator and may be included in a single network access fee. Such fee schedules to be published by the CNF or Network Operator from time to time.
 
 ### 9.1.2 Certificate Access Fees
 
-Certificate access fees will be decided by the CNF and may be included in a single network access fee. Such fee 
-schedules to be published by the CNF from time to time.
+Certificate access fees will be decided by the CNF or Network Operator and may be included in a single network access fee. Such fee schedules to be published by the CNF or Network Operator from time to time.
 
 ### 9.1.3 Revocation or Status Information Access Fees
 
-Revocation or Status Information Access fees will be decided by the CNF and may be included in a single network access 
-fee. Such fee schedules to be published by the CNF from time to time.
+Revocation or status information access fees will be decided by the CNF or Network Operator and may be included in a single network access fee. Such fee schedules to be published by the CNF or Network Operator from time to time.
 
 ### 9.1.4 Fees for other Services
 
-Other Service fees are not envisioned at this time but may be introduced by the CNF in the future and may or may not be 
-included in a single network access fee. Such fee schedules to be published by the CNF from time to time.
+Other service fees are not envisioned at this time but may be introduced by the CNF or Network Operator in the future and may or may not be included in a single network access fee. Such fee schedules to be published by the CNF or Network Operator from time to time.
 
 ### 9.1.5 Refund Policy
 
-Refund Policy will be determined and published by the CNF.
+Refund policy will be determined and published by the CNF or Network Operator.
 
 ## 9.2 Financial Responsibility
 
 ### 9.2.1 Insurance Coverage
 
-CAs will be required to maintain general liability insurance proportionate to the specific risks of the service being 
-offered.
+CAs will be required to maintain general liability insurance proportionate to the specific risks of the service being offered.
 
 ### 9.2.2 Other Assets
 
@@ -1690,9 +1501,7 @@ No stipulation.
 
 ### 9.3.1 Scope of Confidential Information
 
-Information, including names of business entities and routing information, is procured for the express purpose of 
-making such information available to other subscribers and relying parties within the Corda Network and is not 
-considered confidential.
+Information, including names of business entities and routing information, is procured for the express purpose of making such information available to other Subscribers and Relying Parties within the Corda Network and is not considered confidential.
 
 ### 9.3.2 Information not within the Scope of Confidential Information
 
@@ -1706,26 +1515,23 @@ No stipulation.
 
 ### 9.4.1 Privacy Plan
 
-CAs will comply with all relevant Data Protection legislation in the jurisdictions within which they operate.
+CAs will comply with all relevant data protection legislation in the jurisdictions within which they operate.
 
 ### 9.4.2 Information Treated as Private
 
-Any personally identifiable information (PII) relating to subscribers, relying parties or Registration Authorities and 
-their employees to which the CA has access or control must be treated as private.
+Any personally identifiable information relating to Subscribers, Relying Parties or RAs and their employees to which the CA has access or control must be treated in accordance with applicable data protection laws.
 
 ### 9.4.3 Information not Deemed Private
 
-IP addresses of Corda nodes are not considered private information relating to individual persons unless the node is 
-operated by, and certificated to, a named individual rather than a corporate entity will not be deemed private.
+IP addresses (routable by node peers) of Corda nodes are not considered private information because each node is operated by, and certificated to, a corporate entity.
 
 ### 9.4.4 Responsibility to Protect Private Information
 
-The CA will comply with all relevant Data Protection legislation in the jurisdictions within which they
-operate.
+The CA will comply with all relevant data protection legislation in the jurisdictions within which they operate.
 
 ### 9.4.5 Notice and Consent to Use Private Information
 
-The CA will comply with all relevant Data Protection legislation in the jurisdictions within which they operate.
+The CA will comply with all relevant data protection legislation in the jurisdictions within which they operate.
 
 ### 9.4.6 Disclosure Pursuant to Judicial or Administrative Process
 
@@ -1745,35 +1551,18 @@ No stipulation.
 
 ### 9.6.1 Representations and Warranties
 
-The CA makes the below warranties to subscribers and relying parties (‘Certificate Users’) making valid use of such 
-certificates as defined in the Participant Agreement of the Corda Network:
+The   CA makes the below warranties to Network Participants making valid use of such certificates as defined in the Subscriber Agreement.
 
-The CA represents and warrants to Certificate Users that, during the validity period of the Certificate, the CA has
-complied with these requirements and its own Certification Practice Statement
-in issuing and managing the Certificate.
+The CA makes the following certificate warranties:
 
-The Certificate Warranties specifically include, but are not limited to, the following:
-
-1. The CA warrants that they accurately described the procedure for verifying certificate details in their Certification 
-Practice Statement and followed such procedure in the issuance of the Certificate;
-2. The CA warrants that they, at the time of issuance, implemented a procedure for verifying that the Certificate 
-Requester either had the right to use, or had control of, the organisation or person name supplied as Distinguished
-Name for the X.509 certificate or was delegated such right or control by someone who had such right to use or control;
-3. The CA warrants that they implemented a procedure for verifying that the named organisation or individual authorised 
-the submission of the Certificate Signing Request and that the Certificate Requester was in a suitable position to 
-request the Certificate on behalf of the named organisation or individual;
-4. The CA warrants that, at the time of issuance, they implemented a commercially reason able procedure for ensuring 
-that the information contained in the Certificate would not be misleading to relying parties;
-5. The CA warrants that, if the CA and Subscriber are not Affiliated, the Subscriber and CA are parties to a legally 
-valid and enforceable Subscriber Agreement that satisfies these Requirements, or, if the CA and Subscriber are 
-Affiliated, the Certificate Requester acknowledged and accepted the Terms of Use;
-6. The CA warrants that they maintain a 24 x 7 publicly-accessible Repository with current information regarding the 
-status (valid or revoked) of all unexpired Certificates;
-7. The CA warrants that they will revoke the Certificate for any of the reasons specified in this policy or separately 
-described by the Corda Network Foundation in its rules and/or Participant Agreements; _and_
-8. The CA warrants that, if they delegate tasks covered in this policy to a third party (Subordinate CA), they shall be 
-responsible for the performance and warranties of the Subordinate CA, their compliance with this policy, and for all 
-liabilities and indemnities of the Sub ordinate CA under this policy.
+1.	The CA warrants that they accurately described the procedure for verifying certificate details in this CP and followed such procedure in the issuance of the certificate;
+2.	The CA warrants that they, at the time of issuance, implemented a procedure for verifying that the certificate requester either had the right to use, or had control of, the organisation or person name supplied as distinguished name for the X.509 certificate or was delegated such right or control by someone who had such right to use or control;
+3.	The CA warrants that it implemented a procedure for verifying that the named organisation or individual authorised the submission of the CSR and that the certificate requester was in a suitable position to request the certificate on behalf of the named organisation or individual;
+4.	The CA warrants that, at the time of issuance, it implemented a procedure to help detect  that the information contained in the certificate would not be misleading to relying parties;
+5.	The CA warrants that any Subscriber to which it issues a certificate has entered into a legally valid and enforceable Subscriber Agreement that satisfies these requirements with that CA;
+6.	The CA warrants that it maintains a publicly-accessible repository with current information regarding the status (valid or revoked) of all unexpired certificates;
+7.	The CA warrants that it will revoke the certificate for any of the reasons specified in this policy or separately described by the Corda Network Foundation in its rules and/or a certificate services agreement; *and*
+8.	The CA warrants that, if it delegates tasks covered in this policy to a third party (Subordinate CA), it shall be responsible for the performance and warranties of the Subordinate CA, their compliance with this CP, and for all liabilities and indemnities of the Subordinate CA under this policy.
 
 ### 9.6.2 RA Representations and Warranties
 
@@ -1781,38 +1570,20 @@ No stipulation.
 
 ### 9.6.3 Subscriber Representations and Warranties
 
-Prior to the issuance of any Certificate, the CA shall ensure that the subscriber requesting the Certificate has 
-accepted the Terms of Use of the Corda Network as in force at the time of request and either enshrined in the 
-Participant Agreement or any other such document as decreed by the Corda Network Foundation.
+Prior to the issuance of any certificate, the CA shall ensure that the Subscriber requesting the certificate has accepted the Terms of Use of the Corda Network as in force at the time of request and any separate Subscriber Agreement or any other such document as decreed by the Corda Network Foundation or Network CA. 
 
-The CA will implement a process to ensure that the Participant Agreement is legally enforceable against the subscriber 
-and applies to the particular Certificate to be issued as a result of the particular Certificate request. The CA may 
-use an electronic or “click-through” Agreement provided that the CA has determined that such agreements are legally 
-enforceable.
+The CA will implement a process designed to confirm that the Subscriber Agreement is legally enforceable against the Subscriber and applies to the particular Certificate to be issued as a result of the particular certificate request. The CA may use an electronic or “click-through” agreement provided that the CA has determined that such agreements are legally enforceable.
 
-For reference, the Participant Agreement will contain provisions imposing on the subscriber (or subscriber’s agent) 
-requesting the certificate the following obligations and warranties:
+For reference, the Subscriber Agreement will contain provisions imposing on the Subscriber (or Subscriber’s agent) requesting the certificate the following obligations and warranties:
 
-1. To provide accurate and complete information at all times to the CA, both in the Certificate Signing Request and as 
-otherwise requested by the CA in connection with the issuance of the Certificate(s) to be supplied by the CA;
-2. To take all reasonable measures to maintain sole control of, keep confidential, and properly protect at all times 
-the Private Key that corresponds to the Public Key to be included in the requested Certificate(s) (and any associated 
-activation data or device, e.g. password or token);
-3. To review and verify the Certificate contents for accuracy before accepting and using it;
-4. To install the Certificate only on servers that are accessible at the IP addresses supplied at the time of 
-application, and to use the Certificate solely in compliance with all applicable laws and solely in accordance with the 
-Participant or other relevant agreement;
-5. To promptly cease using a Certificate and its associated Private Key, and promptly request the CA to revoke the 
-Certificate, in the event that any information in the Certificate is, or becomes, incorrect or inaccurate, or there is 
-any actual or suspected misuse or compromise of the Subscriber’s Private Key associated with the Public Key included in 
-the Certificate;
-6. To promptly cease all use of the Private Key corresponding to the Public Key included in the Certificate upon 
-revocation of that Certificate for reasons of Key compromise;
-7. To respond to the CA’s instructions concerning Key compromise or Certificate misuse within a specified time period; 
-_and_
-8. To acknowledge and accept that the CA is entitled to revoke the Certificate immediately if the Applicant were to 
-violate the terms of the Participant of other agreement or if the CA discovers that the Certificate is being used to 
-enable criminal activities such as phishing attacks, fraud, or the distribution of malware.
+1.	To provide accurate and complete information at all times to the CA, both in the CSR and as otherwise requested by the CA in connection with the issuance of the certificate(s) to be supplied by the CA;
+2.	To take all reasonable measures to maintain sole control of, keep confidential, and properly protect at all times the private key that corresponds to the public key to be included in the requested certificate(s) (and any associated activation data or device, e.g. password or token);
+3.	To review and verify the certificate contents for accuracy before accepting and using it;
+4.	To install the certificate only on servers that are accessible at the IP addresses supplied at the time of application, and to use the certificate solely in compliance with all applicable laws and solely in accordance with the Network Participant or other relevant agreement;
+5.	To promptly cease using a certificate and its associated private key, and promptly request the CA to revoke the certificate, in the event that any information in the certificate is, or becomes, incorrect or inaccurate, or there is any actual or suspected misuse or compromise of the Subscriber’s private key associated with the public key included in the certificate;
+6.	To promptly cease all use of the private key corresponding to the public key included in the certificate upon revocation of that certificate for reasons of key compromise;
+7.	To respond to the CA’s instructions concerning key compromise or certificate misuse within a specified time period; *and*
+8.	To acknowledge and accept that the CA is entitled to revoke the certificate immediately if the Participant were to violate the terms of the Subscriber Agreement of other agreement or if the CA discovers that the certificate is being used to enable criminal activities such as phishing attacks, fraud, or the distribution of malware.
 
 ### 9.6.4 Relying Parties Representations and Warranties
 
@@ -1824,23 +1595,15 @@ No stipulation.
 
 ## 9.7 Disclaimers of Warranties
 
-No stipulation.
+EXCEPT AS WARRANTED IN SECTION 9.6.1, ALL CERTIFICATES AND ANY RELATED SOFTWARE AND SERVICES ARE PROVIDED “AS IS” AND “AS AVAILABLE.” TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE FOUNDATION   DISCLAIMS ALL OTHER WARRANTIES, BOTH EXPRESS AND IMPLIED, INCLUDING, WITHOUT LIMITATION, ANY IMPLIED WARRANTY OF MERCHANTABILITY, ANY WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE AND ANY WARRANTY OF ACCURACY OF INFORMATION PROVIDED WITH RESPECT TO CERTIFICATES ISSUED BY CA, THE CRL, AND ANY PARTICIPANT’S OR THIRD PARTY’S PARTICIPATION IN THE CORDA NETWORK PKI.
 
 ## 9.8 Limitations of Liability
 
-For delegated tasks, the CA and any third party may divide liability between themselves contractually, but the CA will 
-remain fully responsible for the performance of all parties in accordance with this Policy, as if the tasks had not 
-been delegated.
+For delegated tasks, the CA and any third party may divide liability between themselves contractually, but the CA will remain fully responsible for the performance of all parties in accordance with this Policy, as if the tasks had not been delegated.
 
-If the CA has issued and managed the Certificate in compliance with this Policy and its Certification Practice 
-Statement, the CA may disclaim liability to relying parties or any other third parties for any losses suffered as a 
-result of use or reliance on such Certificate beyond those specified in the CA’s Certification Practice Statement.
+If the CA has issued and managed the certificate in compliance with this Policy and its Certification Practice Statement, the CA may disclaim liability to Relying Parties or any other third parties for any losses suffered as a result of use or reliance on such certificate beyond those specified in the CA’s CPS.
 
-If the CA has not issued or managed the Certificate in compliance with applicable requirements and its Certification 
-Practice Statement, the CA may seek to limit its liability to the Subscriber and to Relying Parties, regardless of the 
-cause of action or legal theory involved, for any and all claims, losses or damages suffered as a result of the use or 
-reliance on such Certificate by any appropriate means that the CA desires. If the CA chooses to so limit its liability, 
-then the CA will include the limitations on liability in its Certification Practice Statement.
+If the CA has not issued or managed the certificate in compliance with applicable requirements and its CPS, the CA may seek to limit its liability to the Network Participants, regardless of the cause of action or legal theory involved, for any and all claims, losses or damages suffered as a result of the use or reliance on such Certificate by any appropriate means that the CA desires. If the CA chooses to so limit its liability, then the CA will include the limitations on liability in its CPS.
 
 ## 9.9 Indemnities
 
@@ -1862,19 +1625,14 @@ No stipulation
 
 ## 9.11 Individual Notices and Communications with Subscribers
 
-The Policy Authority shall establish appropriate procedures for communications with CAs operating under this policy via
-contracts or memoranda of agreement as applicable.
-
+The Policy Authority shall establish appropriate procedures for communications with CAs operating under this policy via contracts or memoranda of agreement as applicable.
 For all other communications, there is no stipulation.
 
 ## 9.12 Amendments
 
 ### 9.12.1 Procedure for Amendment
 
-The Policy Authority shall review this CP at least once every year. Corrections, updates, or changes to this CP shall 
-be publicly available. Suggested changes to this CP shall be communicated to the contact in section 1.5.2; such 
-communication must include a description of the change, a change justification, and contact information for the person 
-requesting the change.
+The Policy Authority shall review this CP at least once every year. Corrections, updates, or changes to this CP shall be publicly available. Suggested changes to this CP shall be communicated to the contact in section 1.5.2; such communication must include a description of the change, a change justification, and contact information for the person requesting the change.
 
 ### 9.12.2 Notification Mechanism and Period
 
@@ -2034,3 +1792,4 @@ WAP Wireless Access Point
 |Draft 0.10|5th September 2018|Jonathan Sartin|More technical detail, key sizes, usage periods uniqueness of names, recognition of trademarks.|
 |Draft 0.11|20th September 2018|Jonathan Sartin|Incorporating proposed changed from Schellman.|
 |Draft 0.12|2nd October 2018|Jonathan Sartin|Moved Document history to appendix. Added Wells Fargo as stakeholders|
+|Draft 1.0|14th May 2021|Lewis Ashton|Updates to reflect necessary technical changes|
