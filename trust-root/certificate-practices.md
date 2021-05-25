@@ -1,6 +1,6 @@
 |Corda Network trust root|[Document history]({{ site.github.repository_url }}/blame/master/{{page.path}})|
 
-The Corda Network Certification Practice Statement
+Corda Network Certification Practice Statement
 ==================================================
 
 14 May 2021
@@ -1192,6 +1192,7 @@ identity type the certificate is for:
 
 7.1.5 Root CA Certificate
 -------------------------
+
 |Extension|Status|Constraints|
 |---------|------|-----------|
 |Basic Constraints|CRITICAL|This extension MUST appear as a critical extension. The CA field MUST be set true. The pathLenConstraint field SHOULD NOT be present|
@@ -1202,6 +1203,7 @@ identity type the certificate is for:
 
 7.1.6 Subordinate “Issuing” CA Certificate
 ------------------------------------------
+
 |Field|Status|Constraint|
 |-----|------|----------|
 |Certificate Policies|REQUIRED|This extension MUST be present and SHOULD NOT be marked as critical. REQUIRED: certificatePolicies:policyIdentifier OPTIONAL: certificatePolicies:policyQualifiers:policyQualifierId OPTIONAL: certificatePolicies:policyQualifiers:qualifier:cPSuri|
@@ -1210,7 +1212,8 @@ identity type the certificate is for:
 |Basic Constraints|CRITICAL|This extension MUST appear as a critical extension. Bit positions for keyCertSign and cRLSign MUST be set. The cA field MUST be set true. The pathLenConstraint field SHOULD NOT be present|
 |Key Usage|CRITICAL| This extension MUST be present and MUST be marked critical. Bit positions for keyCertSign and cRLSign MUST be set. If the Issuing CA Private Key is used for signing OCSP responses, then the digitalSignature bit MUST be set.|
 |Name Constraints|OPTIONAL|If present, this extension SHOULD be marked critical|
-|Extended Key Usage|OPTIONAL|For Subordinate CA Certificates to be Technically con- strained in line with section 7.1.5, then either the value id-kp-serverAuth [RFC5280] or id-kp-clientAuth [RFC5280] or both values MUST be present|
+|Extended Key Usage|OPTIONAL|For Subordinate CA Certificates to be Technically con- strained in line with section 7.1.5, then either the value id-kp-serverAuth [RFC5280] or id-kp-clientAuth [RFC5280] or both values MUST be present**|
+
  
 
 7.1.7 Certificate Policy Object Identifier

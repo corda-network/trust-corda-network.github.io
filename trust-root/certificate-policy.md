@@ -1351,6 +1351,7 @@ Corda Network certificates have a custom X.509 v3 extension that specifies the r
 
 
 ### 7.1.5 Root CA Certificate
+
 |Extension|Status|Constraints|
 |---------|------|-----------|
 |Basic Constraints|CRITICAL|This extension MUST appear as a critical extension. The CA field MUST be set true. The pathLenConstraint field SHOULD NOT be present|
