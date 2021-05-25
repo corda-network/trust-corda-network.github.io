@@ -2,6 +2,8 @@
 
 15 March 2021
 
+Corda Network CRL Profile version 1.0.
+
 ## Purpose
 
 This document provides the reference for the Certificate Revocation Profile, as a component part of the Certificate Policy for the Corda Network.
