@@ -36,5 +36,21 @@ Note that the revocation status of Legal Identity and Confidential Identity cert
 
 The image below depicts the CRL revocation scheme as defined by the Corda PKI. This is the default configuration that a node will use.
 
-![Corda Network CRL Revocation](/path/to/image.png "CRL Hierarchy")
+![Corda Network CRL Revocation Scheme](https://github.com/corda-network/trust-corda-network.github.io/blob/Certificate-Profile-%26-CRL-Profile-2021/assets/images/CRL%20Hierarchy.png "CRL Hierarchy")
+
+## Custom CRL Specification
+
+Nodes can be configured (via node.conf) to specify a custom CRL endpoint for the node TLS certificates. This allows a node operator to control the revocation station of node TLS certificates.
+
+When a node is configured in this way, the CRL scheme will look the image below:
+
+![Custom CRL Revocation Scheme](https://github.com/corda-network/trust-corda-network.github.io/blob/Certificate-Profile-%26-CRL-Profile-2021/assets/images/CRL%20Hierarchy.png "CRL Hierarchy")
+
+
+
+
+## Revocation Process
+
+
+
 
