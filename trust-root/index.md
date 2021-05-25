@@ -28,7 +28,7 @@ Certificates
 The certificate bundle (in JKS format) is the most likely to be used. The remaining details and formats are included 
 for reference and to harmonise with other Certificate Authorities.
 
-|Name                          |Public Key      |Fingerprint                                                |Valid Until  |Links|
+|Name                          |Public Key      |Subject Key Identifier                                     |Valid Until  |Links|
 |------------------------------|----------------|-----------------------------------------------------------|-------------|-----|
 |Corda Network Root Certificate|ECC-256, SHA-256|44:30:BE:62:A8:95:4B:13:03:5A:D3:C4:63:45:6E:9C:F1:1C:E4:65|Jan 18, 2038 |     |
 |Corda Network Authority CNA1  |ECC-256, SHA-256|A9:85:9F:69:4A:BF:06:00:3F:92:39:8B:D6:91:E4:AA:D0:02:ED:F5|Jan 18, 2038 |     |
