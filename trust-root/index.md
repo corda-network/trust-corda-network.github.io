@@ -17,11 +17,11 @@ HSMs.
 
 Certificate Policy
 ------------------
-[Current version](certificate-policy.md) is v12 - this should be updated to "issue" before network launch.
+[Current version](certificate-policy.md) is v1.0 
 
 Certification Practices Statement
 ---------------------------------
-[Current version](certificate-practices.md) is v09 - this should be updated to "issue" before network launch. 
+[Current version](certificate-practices.md) is v1.0  
 
 Certificates
 ------------
