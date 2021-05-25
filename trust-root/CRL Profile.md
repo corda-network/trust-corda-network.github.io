@@ -2,7 +2,7 @@
 
 15 March 2021
 
-Corda Network CRL Profile version 1.0.
+Corda Network CRL Profile 1.0.
 
 ## Purpose
 
