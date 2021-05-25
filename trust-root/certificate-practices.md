@@ -1,6 +1,6 @@
 |Corda Network trust root|[Document history]({{ site.github.repository_url }}/blame/master/{{page.path}})|
 
-The Corda Network Certification Practice Statement
+Corda Network Certification Practice Statement
 ==================================================
 
 14 May 2021
@@ -1192,6 +1192,7 @@ identity type the certificate is for:
 
 7.1.5 Root CA Certificate
 -------------------------
+
 |Extension|Status|Constraints|
 |---------|------|-----------|
 |Basic Constraints|CRITICAL|This extension MUST appear as a critical extension. The CA field MUST be set true. The pathLenConstraint field SHOULD NOT be present|
