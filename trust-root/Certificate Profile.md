@@ -20,6 +20,7 @@ The diagram below illustrates the certificate hierarchy of the Corda Network. Th
 
 The table below lists the cipher suite and algorithms required by each certificate in the Corda certificate hierarchy.
 
+
 | **Certificate**          	| **Cipher Suite**   	| **Signature Hash** 	| **Parameters** 	| **Lifetime** 	| **Notes**                                  	|
 |--------------------------	|--------------------	|--------------------	|----------------	|--------------	|--------------------------------------------	|
 | Corda Foundation Root CA 	| ECDSA with SHA-256 	| SHA-256            	| ECDSA_P256     	| 20 years     	| Permanently offline                        	|
@@ -39,6 +40,7 @@ The table below lists the cipher suite and algorithms required by each certifica
 
 The following section provides the certificate profiles of all certificates in the Corda Network.
 
+
 | **Extension**       	| **Status**  	| **Constraints**                                                                                                                                                                                                        	|
 |---------------------	|-------------	|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
 | basicConstraints    	| CRITICAL    	| (1) This extension MUST appear as a CRITICAL extension. (2) The CA field MUST be set TRUE. (3) the pathLenConstraint field SHOULD NOT be present.                                                                               |
@@ -48,6 +50,7 @@ The following section provides the certificate profiles of all certificates in t
 
 
 ## Subordinate CA Certificate
+
 
 | **Field**                  	| **Status** 	| **Constraints**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        	|
 |----------------------------	|------------	|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
@@ -64,11 +67,14 @@ The following section provides the certificate profiles of all certificates in t
 
 All certificates issued under a Corda Subordinate CA must have the following common property:
 
+
 | **Field**                        	| **Status** 	| **Constraint**                                                                                                                                                            	|
 |----------------------------------	|------------	|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
 | certRole (1.3.6.1.4.1.50530.1.1) 	| REQUIRED   	| (1) This extension MUST be present and SHOULD NOT be marked as CRITICAL. (2) certRole is a custom X.509 extension. It has been registered with OID 1.3.6.1.4.1.50530.1.1. 	|
 
 Corda uses a custom X.509 extension to represent the purpose of each certificate in the Corda PKI. This extension is referred to as the Certificate Role and has an OID of 1.3.6.1.4.1.50530.1.1. The extension contains a single ASN.1 integer which defines the certificate's role.
+
+
 
 | **Certificate Role**  	| **Value** 	| **ASN.1 encoding** 	|
 |-----------------------	|-----------	|--------------------	|
@@ -80,7 +86,9 @@ Corda uses a custom X.509 extension to represent the purpose of each certificate
 | Legal Identity        	| 6         	| 02 01 06           	|
 | Confidential Identity 	| 7         	| 02 01 07           	|
 
+
 ## Doorman CA
+
 
 | **Field**                        	| **Status** 	| **Constraint**                                                                                                                                                                                                                                 	|
 |----------------------------------	|------------	|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
@@ -88,7 +96,9 @@ Corda uses a custom X.509 extension to represent the purpose of each certificate
 | keyUsage                         	| CRITICAL   	| (1) This extension MUST be present and MUST be market CRITICAL.  (2) Bit positions for keyCertSign and cRLSign Must be set.   (3) If the Doorman CA Private Key is used for signing OCSP responses, then the digitalSignature bit MUST be set. 	|
 | certRole (1.3.6.1.4.1.50530.1.1) 	| REQUIRED   	| (1) This extension MUST be present and SHOULD NOT be marked as CRITICAL.  (2) certRole is a custom extension with OID 1.3.6.1.4.1.50530.1.1.  (3) It SHOULD contain the value 02 01 01 which corresponds to Doorman_CA.                        	|
 
+
 ## Network Map
+
 
 | **Field**                        	| **Status** 	| **Constraint**                                                                                                                                                                                                           	|
 |----------------------------------	|------------	|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
@@ -96,7 +106,9 @@ Corda uses a custom X.509 extension to represent the purpose of each certificate
 | keyUsage                         	| CRITICAL   	| (1) This extension MUST be present and MUST be market CRITICAL.  (2) The Bit positions for digitalSignature MUST be set.                                                                                                 	|
 | certRole (1.3.6.1.4.1.50530.1.1) 	| REQUIRED   	| (1) This extension MUST be present and SHOULD NOT be marked as CRITICAL.  (2) certRole is a custom extension with OID 1.3.6.1.4.1.50530.1.1.  (3) It SHOULD contain the value 02 01 02 which corresponds to NETWORK_MAP. 	|
 
+
 ## Service Identity
+
 
 | **Field**                        	| **Status** 	| **Constraint**                                                                                                                                                                                                           	|
 |----------------------------------	|------------	|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
@@ -104,7 +116,9 @@ Corda uses a custom X.509 extension to represent the purpose of each certificate
 | keyUsage                         	| CRITICAL   	| (1) This extension MUST be present and MUST be market CRITICAL.  (2) The Bit positions for digitalSignature MUST be set.                                                                                                 	|
 | certRole (1.3.6.1.4.1.50530.1.1) 	| REQUIRED   	| (1) This extension MUST be present and MUST be marked as CRITICAL.  (2) certRole is a custom extension with OID 1.3.6.1.4.1.50530.1.1.  (3) It SHOULD contain the value 02 01 03 which corresponds to SERVICE_IDENTITY. 	|
 
+
 ## Node CA
+
 
 | **Field**                        	| **Status** 	| **Constraint**                                                                                                                                                                                                                                                                                             	|
 |----------------------------------	|------------	|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	|
