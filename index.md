@@ -21,7 +21,7 @@ Certificate Policy
 
 Certification Practice Statement
 ---------------------------------
-[Current version](/trust-root/certificate-practices.md) is v1.0 
+[Current version](/trust-root/certificate-practices.md) is v1.0. 
 
 Certificates
 ------------
