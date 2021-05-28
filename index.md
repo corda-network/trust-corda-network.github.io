@@ -41,6 +41,14 @@ for reference and to harmonise with other Certificate Authorities.
 |Corda Network Authority CNA8  |ECC-256, SHA-256|41:67:90:E4:B2:EA:D8:E9:B5:39:51:91:31:8C:D5:3C:C9:67:A0:3B|Jan 18, 2038 |([der](/trust-root/certificates/CNA8.crt), [pem](/trust-root/certificates/CNA8.pem))|
 
 
+Corda Network Certificate Profile
+--------------------------------
+[Corda Network Certificate Profile](https://github.com/corda-network/trust-corda-network.github.io/blob/Adding-CRL-%26-Certificate-Profile-to-landing-page/assets/documents/Certificate%20Profile%20V1.0.pdf) is a component of the Certificate Policy for the Corda Network.
+
+Corda Network Certificate Revocation Profile
+--------------------------------
+[Corda Network Certificate Revocation Profile](https://github.com/corda-network/trust-corda-network.github.io/blob/Adding-CRL-%26-Certificate-Profile-to-landing-page/assets/documents/CRL%20Profile%20V1.0.pdf) is a component of the Certificate Policy for the Corda Network.
+
 Service Auditor's summary letter
 --------------------------------
 [Letter](/trust-root/root-key-ceremony-witness-summary-letter.pdf) from the service auditor, Schellman and Company, LLC. 
