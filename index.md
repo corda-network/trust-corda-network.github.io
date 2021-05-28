@@ -43,11 +43,11 @@ for reference and to harmonise with other Certificate Authorities.
 
 Corda Network Certificate Profile
 --------------------------------
-[Corda Network Certificate Profile](https://github.com/corda-network/trust-corda-network.github.io/blob/Adding-CRL-%26-Certificate-Profile-to-landing-page/assets/documents/Certificate%20Profile%20V1.0.pdf) is a component of the Certificate Policy for the Corda Network.
+[Certificate Profile](https://github.com/corda-network/trust-corda-network.github.io/blob/Adding-CRL-%26-Certificate-Profile-to-landing-page/assets/documents/Certificate%20Profile%20V1.0.pdf) is a component of the Certificate Policy for the Corda Network.
 
 Corda Network Certificate Revocation Profile
 --------------------------------
-[Corda Network Certificate Revocation Profile](https://github.com/corda-network/trust-corda-network.github.io/blob/Adding-CRL-%26-Certificate-Profile-to-landing-page/assets/documents/CRL%20Profile%20V1.0.pdf) is a component of the Certificate Policy for the Corda Network.
+[Certificate Revocation Profile](https://github.com/corda-network/trust-corda-network.github.io/blob/Adding-CRL-%26-Certificate-Profile-to-landing-page/assets/documents/CRL%20Profile%20V1.0.pdf) is a component of the Certificate Policy for the Corda Network.
 
 Service Auditor's summary letter
 --------------------------------
