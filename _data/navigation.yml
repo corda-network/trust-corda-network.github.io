@@ -6,6 +6,6 @@ pages:
     - title: Certification Practices Statement
       url: /trust-root/certificate-practices.html
     - title: Ceremony script
-      url: /trust-root/original-script-v10-CAVEAT.pdf
+      url: https://github.com/corda-network/trust-corda-network.github.io/blob/master/assets/documents/original-script-v10-CAVEAT.pdf
     - title: Annotated script
-      url: /trust-root/witness-annotated-script-CAVEAT.pdf
+      url: https://github.com/corda-network/trust-corda-network.github.io/blob/master/assets/documents/witness-annotated-script-CAVEAT.pdf

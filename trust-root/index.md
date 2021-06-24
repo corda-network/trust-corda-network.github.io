@@ -50,9 +50,9 @@ Ceremony script
 The original version of the script is a blank copy of the script used during the day. The internal witnesses annotated
 script records witness signatures, timings and deviations from the script and other observations.
 
-This is the [Original Script](original-script-v10-CAVEAT.pdf).
+This is the [Original Script](https://github.com/corda-network/trust-corda-network.github.io/blob/master/assets/documents/original-script-v10-CAVEAT.pdf).
 
-This is the [Internal Witnesses' annotated script](witness-annotated-script-CAVEAT.pdf).
+This is the [Internal Witnesses' annotated script](https://github.com/corda-network/trust-corda-network.github.io/blob/master/assets/documents/witness-annotated-script-CAVEAT.pdf).
 
 HSM initialisation script
 -------------------------
