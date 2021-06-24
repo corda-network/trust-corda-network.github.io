@@ -3,29 +3,29 @@
 Trust Root Generation
 =====================
 
-The generation of the long-lived trust root for Corda Network required a level of ceremony, witnessing and 
-memorialisation that was met through a highly-scripted and secure event held at the R3 offices at 2 London Wall, 
-London, UK on Friday 14th September 2018. The ceremony required extensive preparation, advice and guidance from both 
-KPMG in 2017 and Schellman in 2018, and included 7 independent witnesses from global banks and R3's partner program. The 
-total expenditure was more than one year of effort, and significant financial cost, in order to deliver long-term 
+The generation of the long-lived trust root for Corda Network required a level of ceremony, witnessing and
+memorialisation that was met through a highly-scripted and secure event held at the R3 offices at 2 London Wall,
+London, UK on Friday 14th September 2018. The ceremony required extensive preparation, advice and guidance from both
+KPMG in 2017 and Schellman in 2018, and included 7 independent witnesses from global banks and R3's partner program. The
+total expenditure was more than one year of effort, and significant financial cost, in order to deliver long-term
 trust.
 
 The full script for the event and other supporting artifacts are found via the links and attachments below.
 
-The root key material generated is held in offline secure locations, and the subordinate key material held on production 
+The root key material generated is held in offline secure locations, and the subordinate key material held on production
 HSMs.
 
 Certificate Policy
 ------------------
-[Current version](/trust-root/certificate-policy.md) is v1.0. 
+[Current version](/trust-root/certificate-policy.md) is v1.0.
 
 Certification Practice Statement
 ---------------------------------
-[Current version](/trust-root/certificate-practices.md) is v1.0. 
+[Current version](/trust-root/certificate-practices.md) is v1.0.
 
 Certificates
 ------------
-The certificate bundle (in JKS format) is the most likely to be used. The remaining details and formats are included 
+The certificate bundle (in JKS format) is the most likely to be used. The remaining details and formats are included
 for reference and to harmonise with other Certificate Authorities.
 
 |Name                          |Public Key      |Subject Key Identifier                                     |Valid Until  |Links|
@@ -55,49 +55,49 @@ Service Auditor's summary letter
 
 Ceremony script
 ---------------
-The original version of the script is a blank copy of the script used during the day. The internal witnesses annotated 
+The original version of the script is a blank copy of the script used during the day. The internal witnesses annotated
 script records witness signatures, timings and deviations from the script and other observations.
 
-This is the [Original Script](/trust-root/original-script-v10.pdf).
+This is the [Original Script](https://github.com/corda-network/trust-corda-network.github.io/blob/master/assets/documents/original-script-v10-CAVEAT.pdf).
 
-This is the [Internal Witnesses' annotated script](/trust-root/witness-annotated-script.pdf).
+This is the [Internal Witnesses' annotated script](https://github.com/corda-network/trust-corda-network.github.io/blob/master/assets/documents/witness-annotated-script-CAVEAT.pdf).
 
 HSM initialisation script
 -------------------------
-The root and subordinate HSMs were initialized the night before the ceremony. The process was overseen and witnessed by 
+The root and subordinate HSMs were initialized the night before the ceremony. The process was overseen and witnessed by
 the Ceremony Administrator. See the [CA annotated HSM initialisation script](/trust-root/ca-annotated-hsm-initialisation-script.pdf).
 
 Ceremony Video
 --------------
-Extensive video recordings were made of the ceremony. The originals are not uploaded here, due to a combination of size 
-and format constraints. Versions rendered to a manageable size have been uploaded to YouTube. The links below will take you 
+Extensive video recordings were made of the ceremony. The originals are not uploaded here, due to a combination of size
+and format constraints. Versions rendered to a manageable size have been uploaded to YouTube. The links below will take you
 there.
 
-The playlist for [Camera 1](https://www.youtube.com/playlist?list=PLi1PppB3-YrW7i3-nOBAE8Maf-EW_kPqx) shows a view of 
+The playlist for [Camera 1](https://www.youtube.com/playlist?list=PLi1PppB3-YrW7i3-nOBAE8Maf-EW_kPqx) shows a view of
 the participants in the ceremony.
 
-The playlist for [Camera 2](https://www.youtube.com/playlist?list=PLi1PppB3-YrWGObJ6BIaSU7PnQ_7jlC5t) shows a view of 
-the entire room from behind the ceremony witness seating area. 
+The playlist for [Camera 2](https://www.youtube.com/playlist?list=PLi1PppB3-YrWGObJ6BIaSU7PnQ_7jlC5t) shows a view of
+the entire room from behind the ceremony witness seating area.
 
-The Cameras were set to record at 1080p, however the output does not 
+The Cameras were set to record at 1080p, however the output does not
 appear to reflect this.  Each 20 minute segment is approximately 500MB.
 
-[Video Capture](https://www.youtube.com/playlist?list=PLi1PppB3-YrWvg2IQTZnscqbL50a9E783) shows the output from the 
-HSM administration machine that used by the Ceremony Administrator to interact with the HSMs during the ceremony. These 
+[Video Capture](https://www.youtube.com/playlist?list=PLi1PppB3-YrWvg2IQTZnscqbL50a9E783) shows the output from the
+HSM administration machine that used by the Ceremony Administrator to interact with the HSMs during the ceremony. These
 appear to occupy approximately 724 MB per hour of recorded video at 720p.
 
 HSM management computer screen log
 ----------------------------------
 The output from the HSM management machine was captured using the 'script' utility. There are two copies of the log file:
 
-See  the [original log complete with control characters](/trust-root/original-script-with-control-characters.log). There is a 
-SHA fingerprint available for for this file (e66a4c79e2ba4a9a12ee7ea7d28af14d1842d6f18ce203da445b194ce80df097). A 
-[processed version of the log](/trust-root/original-script-processed.log) is available (which does not have a fingerprint available, 
+See  the [original log complete with control characters](/trust-root/original-script-with-control-characters.log). There is a
+SHA fingerprint available for for this file (e66a4c79e2ba4a9a12ee7ea7d28af14d1842d6f18ce203da445b194ce80df097). A
+[processed version of the log](/trust-root/original-script-processed.log) is available (which does not have a fingerprint available,
 but which is easier to read, as it does not have embedded control characters).
 
 HSM Logs
 --------
-Logs from HSMs and SHA256 fingerprints for the same, calculated on the HMS management computer at the time they were 
+Logs from HSMs and SHA256 fingerprints for the same, calculated on the HMS management computer at the time they were
 exported.
 
 ### Root HSM (HSM1)
@@ -113,6 +113,6 @@ exported.
 HSM management machine ISO image
 --------------------------------
 
-The ISO image for HSM management machine is downloadable from cloud storage, due to the size of files. The ISO is at 
-[tcn-rkg-2018-09-13-09.iso](https://r3share.mohso.com/dl/x5ZRISCR0P/tcn-rkg-2018-09-13-09.iso_) and the corresponding 
-checksum is at [SHA checksum](https://r3share.mohso.com/dl/9YB0MlWQvk/SHASUM_). 
+The ISO image for HSM management machine is downloadable from cloud storage, due to the size of files. The ISO is at
+[tcn-rkg-2018-09-13-09.iso](https://r3share.mohso.com/dl/x5ZRISCR0P/tcn-rkg-2018-09-13-09.iso_) and the corresponding
+checksum is at [SHA checksum](https://r3share.mohso.com/dl/9YB0MlWQvk/SHASUM_).
